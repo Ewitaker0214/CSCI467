@@ -118,6 +118,7 @@ function showSlides(n) {
 function currentSlide() {
   selectedValue = selectBox.options[selectBox.selectedIndex].value;
   for(let i = 0; i <= selectBox.options.length; i++) {
+    console.log(i);
     if (selectBox.options[i].value == selectedValue) showSlides(slideIndex = i);
   }
 }
