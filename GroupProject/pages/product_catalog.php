@@ -71,12 +71,12 @@
     <div style="text-align:center">
       <form action="./order.php" method="GET">
         <label for="order_selection">Part:</label>
-        <select id="order_selection" name="order_selection" onclick="event.stopImmediatePropagation()">
+        <select id="order_selection" name="order_selection" onchange="currentSlide">
       <?php
       if($connected){
         $count = 1;
         foreach ($rows as $row) {
-          echo "<option class='item' onclick='currentSlide(" . $count . ")' value='" . $row['description'] . "'>" . $row['description'] . "</option>";
+          echo "<option value='" . $row['description'] . "'>" . $row['description'] . "</option>";
           $count += 1;
         }
       }
@@ -91,17 +91,14 @@
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
 <script>
+var selectBox = document.getElementById("order_selection");
+var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
 }
 
 function showSlides(n) {
@@ -113,7 +110,16 @@ function showSlides(n) {
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
+
   slides[slideIndex-1].style.display = "block";
+}
+
+// Thumbnail image controls
+function currentSlide() {
+  var o = document.getElementByTagName("OPTION");
+  for(let i = 0; i <= o.length; i++) {
+    if (o[i].nodeValue == selectedValue) showSlides(slideIndex = i);
+  }
 }
 </script>
 </html>
