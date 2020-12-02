@@ -117,7 +117,7 @@ function showSlides(n) {
 // Thumbnail image controls
 function currentSlide() {
   selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  for(let i = 0; i <= selectBox.options.length; i++) {
+  for(let i = 0; i <= selectBox.options.length - 1; i++) {
     console.log(i);
     if (selectBox.options[i].value == selectedValue) showSlides(slideIndex = i);
   }
