@@ -43,7 +43,6 @@
     <h3 class="">Catalog</h3>
     <!-- Slideshow container -->
     <div class="slideshow-container">
-      <form action="./order.php" method="GET">
       <!-- Full-width images with number and caption text -->
       <?php
       if($connected){
@@ -52,14 +51,16 @@
         $name = "";
         foreach ($rows as $row) {
           echo "<div class='mySlides fade'>
+                <form action='./order.php' method='GET'>
                   <div class='numbertext'><p>" . $row['number'] . "</p></div>
-                  <input type='image' value='" . $row['number'] . "' src='" . $row['pictureURL'] . "' alt='" . $row['description'] . "' style='width:100%'/>
+                  <input type='text' name='order_selection' value='" . $row['number'] . "'/>
+                  <input type='image' src='" . $row['pictureURL'] . "' alt='" . $row['description'] . "' style='width:100%'/>
                   <div class='text'><p>" . $row['description'] ." : " . $row['price'] . "</p></div>
+                  </form>
                 </div>";
         }
       }
       ?>
-    </form>
       <!-- Next and previous buttons -->
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
