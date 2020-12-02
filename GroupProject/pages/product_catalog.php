@@ -53,7 +53,7 @@
           echo "<div class='mySlides fade'>
                 <form action='./order.php' method='GET'>
                   <div class='numbertext'><p>" . $row['number'] . "</p></div>
-                  <input type='text' name='order_selection' value='" . $row['number'] . "'/>
+                  <input type='text' name='order_selection' value='" . $row['number'] . "' hidden disabled/>
                   <input type='image' src='" . $row['pictureURL'] . "' alt='" . $row['description'] . "' style='width:100%'/>
                   <div class='text'><p>" . $row['description'] ." : " . $row['price'] . "</p></div>
                   </form>
