@@ -91,6 +91,8 @@
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
 <script>
+var selectBox = document.getElementById("order_selection");
+var selectedValue;
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -115,8 +117,7 @@ function showSlides(n) {
 // Thumbnail image controls
 function currentSlide() {
   var o = document.getElementByTagName("OPTION");
-  var selectBox = document.getElementById("order_selection");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  selectedValue = selectBox.options[selectBox.selectedIndex].value;
   for(let i = 0; i <= o.length; i++) {
     if (o[i].nodeValue == selectedValue) showSlides(slideIndex = i);
   }
