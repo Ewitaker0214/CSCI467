@@ -119,7 +119,7 @@ function currentSlide() {
   var o = document.getElementsByTagName("OPTION");
   selectedValue = selectBox.options[selectBox.selectedIndex].value;
   for(let i = 0; i <= o.length; i++) {
-    if (o[i].nodeValue == selectedValue) showSlides(slideIndex = i);
+    if (o[i].value == selectedValue) showSlides(slideIndex = i);
   }
 }
 </script>
