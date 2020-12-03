@@ -1,6 +1,5 @@
 <?PHP
   session_start();
-  $_SESSION = array();
   $username = 'student';
   $password = 'student';
   $connected = false;
