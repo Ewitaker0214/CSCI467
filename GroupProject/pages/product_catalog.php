@@ -71,6 +71,7 @@
           <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
           <td><?php echo $row["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+          <td><input type="range" name="Quantity" min=0 /></td>
           <td><input type="submit" name="add_to_cart" value="add_to_cart"/></td>
         </tr>
         <?php
