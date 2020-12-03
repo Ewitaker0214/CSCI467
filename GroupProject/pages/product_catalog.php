@@ -1,13 +1,3 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Product System - Product Catalog</title>
-  <!--<link rel="stylesheet" href="../styles.css">-->
-  <link rel="stylesheet" href="../slideshow.css"/>
-</head>
-
 <?PHP
   $username = 'student';
   $password = 'student';
@@ -20,19 +10,32 @@
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
-  $username = 'z1845428';
-  $password = '2000Jan13';
-  $connected = false;
-  try { // if something goes wrong, an exception is thrown
-    $dsn = "mysql:host=courses;dbname=z1845428";
-    $pdo = new PDO($dsn, $username, $password);
-    $connected = true;
-  }
-  catch(PDOexception $e) { // handle that exception
-    echo "Connection to database failed: " . $e->getMessage();
-  }
 
+  if(isset($_POST["add_to_cart"]))
+  {
+    if(isset($_SESSION["shopping_cart"]))
+    {
+
+    }
+    else
+    {
+      $shopping_cart = array(
+        "item_number" => $_POST["number"],
+        "item_description" => $_POST["description"],
+        "item_price" => $_POST["price"];
+      )
+    }
+  }
 ?>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Product System | Product Catalog</title>
+  <!--<link rel="stylesheet" href="../styles.css">-->
+  <!--<link rel="stylesheet" href="../slideshow.css"/>-->
+</head>
 
 <header>
   <a href="../index.html"><h1>Home</h1></a>
@@ -41,46 +44,64 @@
 <body>
   <main id="">
     <h3 class="">Catalog</h3>
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
-      <!-- Full-width images with number and caption text -->
+    <div class="">
+      <form method="POST" action="./product_catalog.php?action=add">
+      <table border=1 cellspaces=1 id="">
+      <tr>
+        <th>Product Number</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Price</th>
+        <!--<th>Available Quantity</th>-->
+      </tr>
       <?php
-      if($connected){
+      if($connected)
+      {
         $rs = $pdo_legacy->query("SELECT number, description, price, pictureURL FROM parts;");
         $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-        $name = "";
-        foreach ($rows as $row) {
-          echo "<div class='mySlides fade'>
-                <form action='./order.php' method='GET'>
-                  <div class='numbertext'><p>" . $row['number'] . "</p></div>
-                  <input type='text' name='order_selection' value='" . $row['number'] . "' hidden readonly/>
-                  <input type='image' src='" . $row['pictureURL'] . "' alt='" . $row['description'] . "' style='width:100%'/>
-                  <div class='text'><p>" . $row['description'] ." : " . $row['price'] . "</p></div>
-                  </form>
-                </div>";
-        }
-      }
-      ?>
-      <!-- Next and previous buttons -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
 
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-      <form action="./order.php" method="GET">
-        <label for="order_selection">Part:</label>
-        <select id="order_selection" name="order_selection" onchange="currentSlide">
-      <?php
-      if($connected){
-        $count = 1;
-        foreach ($rows as $row) {
-          echo "<option value='" . $row['description'] . "'>" . $row['description'] . "</option>";
-          $count += 1;
+        foreach ($rows as $row)
+        {
+      ?>
+        <tr class=\"\">
+          <td><?php echo $row["number"] ?></td>
+          <input type="hidden" name="number" value="<?php echo $row["number"] ?>"/>
+          <td><img src="<?php echo $row["pictureURL"] ?>" alt="Image of <?php $row[description] ?>"/></td>
+          <td><?php echo $row["description"] ?></td>
+          <input type="hidden" name="description" value="<?php echo $row["description"] ?>"/>
+          <td><?php echo $row["price"] ?></tr>
+          <input type="hidden" name="price" value="<?php echo $row["price"] ?>"/>
+          <input type="submit" name="add_to_cart" value="add_to_cart"/>
         }
+        </table>
+      </form>
+      <?php
       }
       ?>
+    </div>
+    <br/>
+    <div style="text-align:center">
+      <form method="POST" action="./order.php">
+        <table border=1 cellspaces=1 id="">
+        <tr>
+          <th>Product Number</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        <?php
+        if(!is_null($shopping_cart))
+        {
+          foreach ($shopping_cart as $item)
+          {
+        ?>
+          <tr class=\"\">
+            <td><?php echo $item["number"] ?></td>
+            <td><?php echo $item["description"] ?></td>
+            <td><?php echo $item["price"] ?></tr>
+          }
+          </table>
+      </form>
     </select>
   </form>
     </div>
@@ -91,7 +112,7 @@
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
 <script>
-var selectBox = document.getElementById("order_selection");
+/*var selectBox = document.getElementById("order_selection");
 var selectedValue;
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -121,6 +142,6 @@ function currentSlide() {
     console.log(i);
     if (selectBox.options[i].value == selectedValue) showSlides(slideIndex = i);
   }
-}
+}*/
 </script>
 </html>
