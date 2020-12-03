@@ -114,7 +114,7 @@
     <br/>
     <h3>Shopping Cart</h3>
     <div class="">
-      <a id="#shopping_cart">HERE</a>
+      <a id="shopping_cart">HERE</a>
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
         <tr>
