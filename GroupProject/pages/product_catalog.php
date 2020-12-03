@@ -20,7 +20,13 @@
     if($quantity < 0)
     {
       $quantity_error = "Error, invalid quantity selected!";
-    } else
+      echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
+    }
+    else if ($quantity == 0)
+    {
+      echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
+    }
+    else
     {
       if(isset($_SESSION["shopping_cart"]))
       {
@@ -39,7 +45,7 @@
         else
         {
           echo "<script>alert(\"Item Already Added\")</script>";
-          echo "<script>window.location=\"./product_catalog.php\"</script>";
+          echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
         }
       }
       else
@@ -153,11 +159,6 @@
             <td><?php echo $values["item_quantity"]; ?></td>
             <td><a href="product_catalog.php?action=delete&number=<?php echo $values["item_number"]; ?>">Remove</a></td>
           </tr>
-          <tr>
-            <td colspan=2 >Total: </td>
-            <td>$<?php echo $total; ?></td>
-            <td colspan=2 ><input type="submit" name="complete_order" value="Complete Order"/></td>
-          </tr>
           <?php
           }
         ?>
@@ -168,7 +169,6 @@
         </tr>
         <?php
       }
-        print_r($_SESSION["shopping_cart"]);
           ?>
           </table>
       </form>
