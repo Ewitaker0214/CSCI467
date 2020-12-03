@@ -65,7 +65,7 @@
 </head>
 
 <header>
-  <a href="../index.html"><h1>Home</h1></a>
+  <a href="../index.php"><h1>Home</h1></a>
 </header>
 
 <body>
@@ -113,7 +113,8 @@
     </div>
     <br/>
     <h3>Shopping Cart</h3>
-    <div id="#shopping_cart">
+    <div class="">
+      <a id="#shopping_cart">HERE</a>
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
         <tr>
