@@ -11,20 +11,31 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
+  $quantity_error = "";
+
   if(isset($_POST["add_to_cart"]))
   {
-    if(isset($_SESSION["shopping_cart"]))
+    $quantity = $_POST["quantity"];
+    if($quantity < 0)
     {
+      $quantity_error = "Error, invalid quantity selected!";
+    } else
+    {
+      if(isset($_SESSION["shopping_cart"]))
+      {
 
+      }
+      else
+      {
+        $shopping_cart = array(
+          "item_number" => $_POST["number"],
+          "item_description" => $_POST["description"],
+          "item_price" => $_POST["price"],
+          "item_quantity" => $quantity
+        );
+      }
     }
-    else
-    {
-      $shopping_cart = array(
-        "item_number" => $_POST["number"],
-        "item_description" => $_POST["description"],
-        "item_price" => $_POST["price"]
-      );
-    }
+    alert("HELLO WORLD");
   }
 ?>
 <!doctype html>
@@ -45,7 +56,6 @@
   <main id="">
     <h3 class="">Catalog</h3>
     <div class="">
-      <form method="POST" action="./product_catalog.php?action=add">
       <table border=1 cellspaces=1 id="">
       <tr>
         <th>Product Number</th>
@@ -63,6 +73,7 @@
         foreach ($rows as $row)
         {
       ?>
+      <form method="POST" action="./product_catalog.php?action=add">
         <tr class="">
           <td><?php echo $row["number"]; ?></td>
           <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
@@ -71,15 +82,15 @@
           <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
           <td><?php echo $row["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
-          <td><input type="range" name="Quantity" min=0 /></td>
+          <td><input type="text" name="quantity" value=0 /><span style="color:red"><?php echo $quantity_error; ?></span></td>
           <td><input type="submit" name="add_to_cart" value="add_to_cart"/></td>
         </tr>
+        </form>
         <?php
       }
     }
          ?>
         </table>
-      </form>
     </div>
     <br/>
     <div class="">
