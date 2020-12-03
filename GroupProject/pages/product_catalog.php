@@ -65,12 +65,12 @@
       ?>
         <tr class=\"\">
           <td><?php echo $row["number"] ?></td>
-          <input type="hidden" name="number" value="<?php echo $row["number"] ?>"/>
-          <td><img src="<?php echo $row["pictureURL"] ?>" alt="Image of <?php $row[description] ?>"/></td>
-          <td><?php echo $row["description"] ?></td>
-          <input type="hidden" name="description" value="<?php echo $row["description"] ?>"/>
-          <td><?php echo $row["price"] ?></tr>
-          <input type="hidden" name="price" value="<?php echo $row["price"] ?>"/>
+          <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
+          <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row[description]; ?>"/></td>
+          <td><?php echo $row["description"]; ?></td>
+          <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
+          <td><?php echo $row["price"]; ?></tr>
+          <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
           <input type="submit" name="add_to_cart" value="add_to_cart"/>
         }
         </table>
@@ -96,9 +96,9 @@
           {
         ?>
           <tr class=\"\">
-            <td><?php echo $item["number"] ?></td>
-            <td><?php echo $item["description"] ?></td>
-            <td><?php echo $item["price"] ?></tr>
+            <td><?php echo $item["number"]; ?></td>
+            <td><?php echo $item["description"]; ?></td>
+            <td><?php echo $item["price"]; ?></tr>
           }
           </table>
       </form>
