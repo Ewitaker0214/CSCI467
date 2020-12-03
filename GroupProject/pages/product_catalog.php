@@ -49,7 +49,7 @@
           "item_price" => $_POST["price"],
           "item_quantity" => $quantity
         );
-        $_SESSION["shopping_cart"][0] = $item_array;
+        $_SESSION["shopping_cart"][0] = $shopping_cart;
       }
     }
   }
@@ -70,7 +70,6 @@
 
 <body>
   <main id="">
-    <a href="#shopping_cart">Jump</a>
     <h3 class="">Catalog</h3>
     <p><span style="color:red"><?php echo $quantity_error; ?></span></p>
     <div class="">
@@ -92,7 +91,7 @@
         foreach ($rows as $row)
         {
       ?>
-      <form method="POST" action="./product_catalog.php?action=add">
+      <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
         <tr>
           <td># <?php echo $row["number"]; ?></td>
           <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
@@ -112,9 +111,8 @@
         </table>
     </div>
     <br/>
-    <h3>Shopping Cart</h3>
+    <a id="shopping_cart"><h3>Shopping Cart</h3></a>
     <div class="">
-      <a id="shopping_cart">HERE</a>
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
         <tr>
