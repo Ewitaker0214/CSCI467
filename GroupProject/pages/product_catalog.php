@@ -64,7 +64,7 @@
       {
         unset($_SESSION["shopping_cart"][$items]);
         echo "<script>alert(\"Item Removed\")</script>";
-        echo "<script>windoe.location=\"product_catalog/php#shopping_cart\"</script>;
+        echo "<script>windoe.location=\"product_catalog/php#shopping_cart\"</script>;"
       }
     }
   }
