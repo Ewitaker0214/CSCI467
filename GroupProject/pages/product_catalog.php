@@ -136,15 +136,15 @@
             <td>$ <?php echo $values["item_price"]; ?></td>
             <td><?php echo $values["item_quantity"]; ?></td>
           </tr>
-          <?php
-          }
-        }
-          ?>
           <tr>
             <td colspan=2 >Total: </td>
             <td><?php echo $total; ?></td>
             <td><input type="submit" name="complete_order" value="Complete Order"/></td>
           </tr>
+          <?php
+          }
+        }
+          ?>
           </table>
       </form>
     </select>
