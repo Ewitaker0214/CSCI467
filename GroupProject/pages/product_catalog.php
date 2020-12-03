@@ -98,7 +98,7 @@
           <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row["description"]; ?>"/></td>
           <td><?php echo $row["description"]; ?></td>
           <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
-          <td>$ <?php echo $row["price"]; ?></td>
+          <td>$<?php echo $row["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
           <td><input type="text" name="quantity" value=0 /></td>
           <td><input type="submit" name="add_to_cart" value="Add to Cart"/></td>
@@ -125,24 +125,26 @@
         if(!empty($_SESSION["shopping_cart"]))
         {
           $total = 0;
-          foreach ($_SESSION["shopping_cart"] as $items => $values)
+          foreach($_SESSION["shopping_cart"] as $items => $values)
           {
+            foreach($_SESSION[""])
             $total += number_format($values["item_quantity"] * $values["item_price"], 2);
         ?>
           <tr>
             <td><?php echo $values["item_number"]; ?></td>
             <td><?php echo $values["item_description"]; ?></td>
-            <td>$ <?php echo $values["item_price"]; ?></td>
+            <td>$<?php echo $values["item_price"]; ?></td>
             <td><?php echo $values["item_quantity"]; ?></td>
           </tr>
           <tr>
             <td colspan=2 >Total: </td>
-            <td><?php echo $total; ?></td>
+            <td>$<?php echo $total; ?></td>
             <td><input type="submit" name="complete_order" value="Complete Order"/></td>
           </tr>
           <?php
           }
         }
+        print_r($_SESSION["shopping_cart"]);
           ?>
           </table>
       </form>
