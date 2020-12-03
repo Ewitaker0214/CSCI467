@@ -157,7 +157,7 @@
             <td><?php echo $values["item_description"]; ?></td>
             <td>$<?php echo $values["item_price"]; ?></td>
             <td><?php echo $values["item_quantity"]; ?></td>
-            <td><a href="product_catalog.php?action=delete&number=<?php echo $values["item_number"]; ?>">Remove</a></td>
+            <td><a href="product_catalog.php#shopping_cart?action=delete&number=<?php echo $values["item_number"]; ?>">Remove</a></td>
           </tr>
           <?php
           }
