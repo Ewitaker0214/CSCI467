@@ -35,7 +35,7 @@
         );
       }
     }
-    alert("HELLO WORLD");
+    echo "<script>alert("HELLO WORLD")</script";
   }
 ?>
 <!doctype html>
