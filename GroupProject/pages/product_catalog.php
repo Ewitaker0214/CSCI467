@@ -59,9 +59,9 @@
 {
   if($_GET["action"] == "delete")
   {
-    foreach ($_SESSION["shopping_cart"] as $items)
+    foreach ($_SESSION["shopping_cart"] as $items => $values)
     {
-      if($items["item_number"] == $_GET["number"])
+      if($values["item_number"] == $_GET["number"])
       {
         unset($_SESSION["shopping_cart"][$items]);
         echo "<script>alert(\"Item Removed\")</script>";
@@ -142,16 +142,16 @@
         if(!empty($_SESSION["shopping_cart"]))
         {
           $total = 0;
-          foreach($_SESSION["shopping_cart"] as $items)
+          foreach($_SESSION["shopping_cart"] as $items => $values)
           {
-            $total += number_format($items["item_quantity"] * $items["item_price"], 2);
+            $total += number_format($values["item_quantity"] * $values["item_price"], 2);
         ?>
           <tr>
-            <td># <?php echo $items["item_number"]; ?></td>
-            <td><?php echo $items["item_description"]; ?></td>
-            <td>$<?php echo $items["item_price"]; ?></td>
-            <td><?php echo $items["item_quantity"]; ?></td>
-            <td><a href="product_catalog.php?action=delete&number=<?php echo $items["item_number"]; ?>">Remove</a></td>
+            <td># <?php echo $values["item_number"]; ?></td>
+            <td><?php echo $values["item_description"]; ?></td>
+            <td>$<?php echo $values["item_price"]; ?></td>
+            <td><?php echo $values["item_quantity"]; ?></td>
+            <td><a href="product_catalog.php?action=delete&number=<?php echo $values["item_number"]; ?>">Remove</a></td>
           </tr>
           <tr>
             <td colspan=2 >Total: </td>
@@ -160,7 +160,14 @@
           </tr>
           <?php
           }
-        }
+        ?>
+        <tr>
+          <td colspan=2 >Total: </td>
+          <td>$<?php echo $total; ?></td>
+          <td colspan=2 ><input type="submit" name="complete_order" value="Complete Order"/></td>
+        </tr>
+        <?php
+      }
         print_r($_SESSION["shopping_cart"]);
           ?>
           </table>
