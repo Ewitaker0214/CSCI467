@@ -22,8 +22,8 @@
       $shopping_cart = array(
         "item_number" => $_POST["number"],
         "item_description" => $_POST["description"],
-        "item_price" => $_POST["price"];
-      )
+        "item_price" => $_POST["price"]
+      );
     }
   }
 ?>
