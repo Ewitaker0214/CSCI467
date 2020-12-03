@@ -23,7 +23,23 @@
     {
       if(isset($_SESSION["shopping_cart"]))
       {
-
+        $shopping_cart_number = array_column($_SESSION["shopping_cart"], "item_number");
+        if(!in_array($_POST["number"], $shopping_cart_number))
+        {
+          $count = count($_SESSION["shopping_cart"]);
+          $shopping_cart = array(
+            "item_number" => $_POST["number"],
+            "item_description" => $_POST["description"],
+            "item_price" => $_POST["price"],
+            "item_quantity" => $quantity
+          );
+          $_SESSION["shopping_cart"][$count] = $shopping_cart;
+        }
+        else
+        {
+          echo "<script>alert(\"Item Already Added\")</script>";
+          echo "<script>window.location=\"./product_catalog.php\"</script>";
+        }
       }
       else
       {
@@ -33,9 +49,9 @@
           "item_price" => $_POST["price"],
           "item_quantity" => $quantity
         );
+        $_SESSION["shopping_cart"][0] = $item_array;
       }
     }
-    echo "<script>alert(\"HELLO WORLD\")</script>";
   }
 ?>
 <!doctype html>
@@ -54,7 +70,9 @@
 
 <body>
   <main id="">
+    <a href="#shopping_cart">Jump</a>
     <h3 class="">Catalog</h3>
+    <p><span style="color:red"><?php echo $quantity_error; ?></span></p>
     <div class="">
       <table border=1 cellspaces=1 id="">
       <tr>
@@ -62,6 +80,7 @@
         <th>Image</th>
         <th>Description</th>
         <th>Price</th>
+        <th colspan=2>Add to Shopping Cart</th>
         <!--<th>Available Quantity</th>-->
       </tr>
       <?php
@@ -74,16 +93,16 @@
         {
       ?>
       <form method="POST" action="./product_catalog.php?action=add">
-        <tr class="">
-          <td><?php echo $row["number"]; ?></td>
+        <tr>
+          <td># <?php echo $row["number"]; ?></td>
           <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
           <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row["description"]; ?>"/></td>
           <td><?php echo $row["description"]; ?></td>
           <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
-          <td><?php echo $row["price"]; ?></td>
+          <td>$ <?php echo $row["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
-          <td><input type="text" name="quantity" value=0 /><span style="color:red"><?php echo $quantity_error; ?></span></td>
-          <td><input type="submit" name="add_to_cart" value="add_to_cart"/></td>
+          <td><input type="text" name="quantity" value=0 /></td>
+          <td><input type="submit" name="add_to_cart" value="Add to Cart"/></td>
         </tr>
         </form>
         <?php
@@ -93,7 +112,8 @@
         </table>
     </div>
     <br/>
-    <div class="">
+    <h3>Shopping Cart</h3>
+    <div id="#shopping_cart">
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
         <tr>
@@ -103,19 +123,28 @@
           <th>Quantity</th>
         </tr>
         <?php
-        if(!is_null($shopping_cart))
+        if(!empty($_SESSION["shopping_cart"]))
         {
-          foreach ($shopping_cart as $item)
+          $total = 0;
+          foreach ($_SESSION["shopping_cart"] as $items => $values)
           {
+            $total += number_format($values["item_quantity"] * $values["item_price"], 2);
         ?>
-          <tr class="">
-            <td><?php echo $item["number"]; ?></td>
-            <td><?php echo $item["description"]; ?></td>
-            <td><?php echo $item["price"]; ?></tr>
+          <tr>
+            <td><?php echo $values["item_number"]; ?></td>
+            <td><?php echo $values["item_description"]; ?></td>
+            <td>$ <?php echo $values["item_price"]; ?></td>
+            <td><?php echo $values["item_quantity"]; ?></td>
+          </tr>
           <?php
           }
         }
           ?>
+          <tr>
+            <td colspan=2 >Total: </td>
+            <td><?php echo $total; ?></td>
+            <td><input type="submit" name="complete_order" value="Complete Order"/></td>
+          </tr>
           </table>
       </form>
     </select>
