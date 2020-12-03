@@ -63,24 +63,25 @@
         foreach ($rows as $row)
         {
       ?>
-        <tr class=\"\">
-          <td><?php echo $row["number"] ?></td>
+        <tr class="">
+          <td><?php echo $row["number"]; ?></td>
           <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
-          <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row[description]; ?>"/></td>
+          <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row["description"]; ?>"/></td>
           <td><?php echo $row["description"]; ?></td>
           <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
-          <td><?php echo $row["price"]; ?></tr>
+          <td><?php echo $row["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
-          <input type="submit" name="add_to_cart" value="add_to_cart"/>
-        }
+          <td><input type="submit" name="add_to_cart" value="add_to_cart"/></td>
+        </tr>
+        <?php
+      }
+    }
+         ?>
         </table>
       </form>
-      <?php
-      }
-      ?>
     </div>
     <br/>
-    <div style="text-align:center">
+    <div class="">
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
         <tr>
@@ -95,11 +96,14 @@
           foreach ($shopping_cart as $item)
           {
         ?>
-          <tr class=\"\">
+          <tr class="">
             <td><?php echo $item["number"]; ?></td>
             <td><?php echo $item["description"]; ?></td>
             <td><?php echo $item["price"]; ?></tr>
+          <?php
           }
+        }
+          ?>
           </table>
       </form>
     </select>
@@ -111,7 +115,7 @@
 <footer>
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
-<script>
+<!--<script>
 /*var selectBox = document.getElementById("order_selection");
 var selectedValue;
 var slideIndex = 1;
@@ -143,5 +147,5 @@ function currentSlide() {
     if (selectBox.options[i].value == selectedValue) showSlides(slideIndex = i);
   }
 }*/
-</script>
+</script>-->
 </html>
