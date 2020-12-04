@@ -31,12 +31,12 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $rs = $pdo_legacy->query("DESCRIBE parts;");
-  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
+ // $rs = $pdo_legacy->query("DESCRIBE parts;");
+ // print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
 <header>
-  <a href="../index.html"><h1>Home</h1></a>
+  <a href="../index.php"><h1>Home</h1></a>
 </header>
 
 <body>
@@ -68,10 +68,10 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <form action="administration.php" method="POST">
 <p>    
 	         <label for="sDate">Starting Date:</label>
-		 <input type="date" id="sDate" name="sDate" >
+		 <input type="datetime-local" id="sDate" name="sDate" >
 
             	 <label for="eDate">End Date:</label>
-		 <input type="date" id="eDate" name="eDate" >
+		 <input type="datetime-local" id="eDate" name="eDate" >
 		      	 
   		 <p><input type="submit" name="submit1" value="View"></p>
 <br>
@@ -136,7 +136,13 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 switch (true) 
 {
 	case isset($_POST["submit"]):
-		echo "Shipping charges have been updated";
+		$_SESSION["bracket1"] = $_POST["bracket1"];
+		$_SESSION["bracket2"] = $_POST["bracket2"];
+		$_SESSION["bracket3"] = $_POST["bracket3"];
+		$_SESSION["bracket4"] = $_POST["bracket4"];
+		$_SESSION["bracket5"] = $_POST["bracket5"];
+		$_SESSION["bracket6"] = $_POST["bracket6"];
+		echo '<p>Shipping charges have been updated</p>;
 			break;
 
 	case isset($_POST["submit1"]):
