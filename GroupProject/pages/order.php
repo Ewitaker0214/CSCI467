@@ -33,7 +33,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $ErrName = $ErrEmail = $ErrAddress = "";
+  $ErrName = $ErrEmail = $ErrAddress = "Error";
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
