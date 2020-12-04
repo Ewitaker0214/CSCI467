@@ -61,7 +61,7 @@
     }
     else
     {
-      if (isset($_GET("action") && $_GET("action") == "add") {
+      if (isset($_GET("action") && $_GET("action") == "add")) {
       if(empty($_POST["name"]))
       {
         echo "<script>alert(\"Name is required\")</script>";
