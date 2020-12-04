@@ -18,7 +18,7 @@ function enable()
   let next = document.getElementsByClassName("name_info")
   next[0].disabled = true;
 }
-</script>;
+</script>
 
 <?PHP
   $username = 'student';
