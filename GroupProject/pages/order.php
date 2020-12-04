@@ -21,7 +21,7 @@ function enable()
 
 function closeForm(){
   let form = document.getElementById("credit_form");
-  form.style = "display: block";
+  form.style = "display: hidden";
 }
 </script>
 <?PHP
@@ -54,7 +54,7 @@ function closeForm(){
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
-  $valid = false;
+  $valid = $complete = false;
 
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
@@ -112,6 +112,7 @@ echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 else {
 echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
 }
+$complete = true;
     }
     else
     {
@@ -188,6 +189,9 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
         <?php
         if ($valid){
           echo "<script>enable();</script";
+        }
+        if ($valid){
+          echo "<script>closeForm();</script";
         }
          ?>
     </div>
