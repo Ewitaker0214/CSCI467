@@ -18,6 +18,11 @@ function enable()
   let next = document.getElementsByClassName("name_info")
   next[0].disabled = true;
 }
+
+function closeForm(){
+  let form = document.getElementById("credit_form");
+  form.style = "display: block";
+}
 </script>
 <?PHP
   $username = 'student';
@@ -43,7 +48,7 @@ function enable()
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
-  if(isset($_POST["amount"])){
+  if(!isset($_POST["amount"])){
   $amount = $_POST["amount"];
 }
   $name = $email = $address = "";
@@ -73,13 +78,13 @@ function enable()
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-      if (isset($_SESSION["taxes"]))
+      if (isset($taxes))
 {
-  $_SESSION["amount"] *= $_SESSION["taxes"];
+  $amount *= $taxes;
 }
 else {
-  $_SESSION["taxes"] = 0.15;
-  $_SESSION["amount"] = ($_SESSION["amount"] * $_SESSION["taxes"]) + $_SESSION["amount"];
+  $taxes = 0.15;
+  $amount = ($amount * $taxes) + $amount;
 }
 $url = "http://blitz.cs.niu.edu/CreditCard/";
 $data = array(
@@ -165,7 +170,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
   <main id="">
     <div>
     <span style="color:red">* required field </span>
-    <form method="POST" action="./order.php?action=add">
+    <form id="credit_form" method="POST" action="./order.php?action=add">
         <label for="name">Name: </label>
         <input type="text" name="name" value="<?php echo $name; ?>" required/><span style="color:red">*</span>
         <label for="email">Email: </label>
