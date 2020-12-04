@@ -154,7 +154,7 @@ switch (true)
 	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
+        <form method="POST" action="administration.php">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -194,7 +194,7 @@ switch (true)
 	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
+        <form method="POST" action="administration.php">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -234,7 +234,7 @@ switch (true)
 	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
+        <form method="POST" action="administration.php">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -274,7 +274,7 @@ switch (true)
 	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
+        <form method="POST" action="administration.php">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
