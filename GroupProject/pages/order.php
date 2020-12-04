@@ -77,7 +77,7 @@ $amount = $_SESSION["amount"] ;
       if(empty($_POST["expiration_date"]))
       {
         $expire_date = $_POST["expiration_date"];
-        if(!preg_match("/^[0-2][0-9]-[0-3][0-9]$/", $expire_date))
+        if(!preg_match("/^[0-2][0-9]\/20[0-3][0-9]$/", $expire_date))
         {
         echo "<script>alert(\"Invalid Expiration Date\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -110,7 +110,7 @@ $data = array(
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
-if (!preg_match("/^Error.*/", $result))
+if (!preg_match("/^errors.*/", $result))
 {
 echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 }
@@ -192,7 +192,7 @@ $complete = true;
         </form>
         <?php
         if ($valid){
-          echo "<h2>Total: <?php echo $amount . \"(taxes included)\" ?></hr>";
+          echo "<h2>Total:" . $amount . "\"(taxes included)\" </hr>";
           echo "<script>enable();</script>";
         }
         if ($valid){
