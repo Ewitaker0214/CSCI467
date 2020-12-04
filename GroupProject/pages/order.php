@@ -98,7 +98,16 @@
       {
         $address = $_POST["address"];
       }
-      echo "<script>enable();</script>";
+      echo "<script type=\"text/javascript\">
+      function enable()
+      {
+        let tags = document.getElementsByClassName(\"card_info\");
+        for(let i = 0; i < tags.length - 1; ++i)
+        {
+          tags[i].disabled = false;
+        }
+      }
+      </script>";
     }
     }
 }
@@ -137,15 +146,5 @@
 <footer>
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
-<script type="text/javascript">
-function enable()
-{
-  let tags = document.getElementsByClassName("card_info");
-  for(let i = 0; i < tags.length - 1; ++i)
-  {
-    tags[i].disabled = false;
-  }
-}
-</script>
 
 </html>
