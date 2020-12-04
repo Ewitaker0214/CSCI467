@@ -136,6 +136,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
       echo "<script>alert(\"Invalid email format\")</script>";
       echo "<script>window.location=\"order.php\"</script>";
       }
+    }
       if (empty($_POST["address"]))
       {
         echo "<script>alert(\"Email is required\")</script>";
@@ -150,7 +151,6 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
     }
 }
 }
-  }
 ?>
 
 <header>
