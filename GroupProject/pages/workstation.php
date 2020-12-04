@@ -58,7 +58,7 @@
 
   <header> Print Invoice & Shipping Label
   <form action="order.php" method="post">
-  Order #: <input type="text" name="number"><br>
+  <br>Order #: <input type="text" name="number"><br>
   <input type="submit" name="submit" value="Print"><br><br>
   </form>
 
