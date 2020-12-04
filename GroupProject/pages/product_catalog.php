@@ -113,27 +113,31 @@
         <th>Image</th>
         <th>Description</th>
         <th>Price</th>
+        <th>On Hand</th>
         <th colspan=2>Add to Shopping Cart</th>
-        <!--<th>Available Quantity</th>-->
       </tr>
       <?php
       if($connected1)
       {
-        $rs = $pdo_legacy->query("SELECT number, description, price, pictureURL FROM parts;");
-        $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
+        $rs1 = $pdo_legacy->query("SELECT number, description, price, pictureURL FROM parts;");
+        $rows1 = $rs1->fetchAll(PDO::FETCH_ASSOC);
+
+        $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
+        $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row)
         {
       ?>
       <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
         <tr>
-          <td># <?php echo $row["number"]; ?></td>
-          <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
-          <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row["description"]; ?>"/></td>
+          <td># <?php echo $row1["number"]; ?></td>
+          <input type="hidden" name="number" value="<?php echo $row1["number"]; ?>"/>
+          <td><img src="<?php echo $row1["pictureURL"]; ?>" alt="Image of <?php echo $row1["description"]; ?>"/></td>
           <td><?php echo $row["description"]; ?></td>
-          <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
-          <td>$<?php echo $row["price"]; ?></td>
-          <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+          <input type="hidden" name="description" value="<?php echo $row1["description"]; ?>"/>
+          <td>$<?php echo $row1["price"]; ?></td>
+          <input type="hidden" name="price" value="<?php echo $row1["price"]; ?>"/>
+          <td><?php if(row2["part_number"] == row1["number"] && row2["description"] == row1["description"]) echo $row2["in_stock"]; ?></td>
           <td><input type="text" name="quantity" value=0 /></td>
           <td><input type="submit" name="add_to_cart" value="Add to Cart"/></td>
         </tr>
