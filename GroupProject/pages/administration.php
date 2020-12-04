@@ -133,17 +133,20 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 
 <?PHP  
 
-switch (isset()) 
+switch (true) 
 {
-	case $_POST["submit"]:
+	case isset($_POST["submit"]):
+		echo "Shipping charges have been updated";
 			break;
 
-	case $_POST["submit1"]:
-		$result = $pdo->query($SBD);
-		if(result->num_rows >0)
-		{
-			while($row = $result->fetch_assoc())
-			{
+	case isset($_POST["submit1"]):
+		if($connected2)
+      		{
+			$result = $pdo->query($SBD);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)
+        {
         ?>
         <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
@@ -176,12 +179,14 @@ switch (isset())
 		}
 		break;
 
-	case $_POST["submit2"]:
-		$result = $pdo->query($SBP);
-		if(result->num_rows >0)
-		{
-			while($row = $result->fetch_assoc())
-			{
+	case isset($_POST["submit2"]):
+		if($connected2)
+      		{
+			$result = $pdo->query($SBP);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)
+        {
         ?>
         <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
@@ -214,12 +219,14 @@ switch (isset())
 		}
 		break;
 
-	case $_POST["submit3"]:
-		$result = $pdo->query($SBS);
-				if(result->num_rows >0)
-		{
-			while($row = $result->fetch_assoc())
-			{
+	case isset($_POST["submit3"]):
+		if($connected2)
+      		{
+			$result = $pdo->query($SBS);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)
+        {
         ?>
         <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
@@ -252,12 +259,14 @@ switch (isset())
 		}
 		break;
 
-	case $_POST["submit4"]):
-		$result = $pdo->query($SBA);
-				if(result->num_rows >0)
-		{
-			while($row = $result->fetch_assoc())
-			{
+	case isset($_POST["submit4"]):
+		if($connected2)
+      		{
+			$result = $pdo->query($SBA);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)
+        {
         ?>
         <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
