@@ -8,6 +8,7 @@
 </head>
   
 <?PHP
+  session_start();
   $username = 'student';
   $password = 'student';
   $connected = false;
