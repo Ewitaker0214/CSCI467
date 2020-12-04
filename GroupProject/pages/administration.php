@@ -41,13 +41,6 @@
 
 <body>
   <main id="">
-    <?PHP
-    //SQL SEARCH STATMENTS
-$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
-$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
-$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
-$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
-?>
     <h2>Shipping and Handling Costs</h2>
 
 <form method ="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -132,7 +125,12 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
       </tr>
 
 <?PHP  
-
+    //SQL SEARCH STATMENTS
+$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
+$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
+$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
+?>
 switch (true) 
 {
 	case isset($_POST["submit"]):
