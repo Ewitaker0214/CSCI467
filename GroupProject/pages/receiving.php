@@ -8,6 +8,7 @@
 </head>
   
 <?PHP
+  session_start();
   $username = 'student';
   $password = 'student';
   $connected = false;
@@ -19,6 +20,7 @@
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
+  
   $username = 'z1845428';
   $password = '2000Jan13';
   $connected = false;
@@ -31,7 +33,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $rs = $pdo_legacy->query("DESCRIBE parts;");
+  $rs = $pdo_legacy->query("DESCRIBE Parts;");
   print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
