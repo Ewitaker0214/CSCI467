@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Product System - Workstation</title>
+  <title>Warehouse Workstation</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
 
@@ -39,7 +39,6 @@
   <a href="../index.html"><h1>Home</h1></a>
 </header>
 
-<header> WAREHOUSE WORKSTATION<br><br>
 <body>
   <main id="">
  
