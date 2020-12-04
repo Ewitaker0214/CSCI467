@@ -159,7 +159,7 @@ switch (isset())
             <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
             <td>$<?php echo $row["expiration_date"]; ?></td>
             <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
-				    <td># <?php echo $row["purchase_amount"]; ?></td>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
             <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
             <td><?php echo $row["authorized"]; ?></td>
             <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
@@ -197,7 +197,7 @@ switch (isset())
             <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
             <td>$<?php echo $row["expiration_date"]; ?></td>
             <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
-				    <td># <?php echo $row["purchase_amount"]; ?></td>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
             <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
             <td><?php echo $row["authorized"]; ?></td>
             <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
@@ -235,7 +235,7 @@ switch (isset())
             <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
             <td>$<?php echo $row["expiration_date"]; ?></td>
             <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
-				    <td># <?php echo $row["purchase_amount"]; ?></td>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
             <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
             <td><?php echo $row["authorized"]; ?></td>
             <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
@@ -273,7 +273,7 @@ switch (isset())
             <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
             <td>$<?php echo $row["expiration_date"]; ?></td>
             <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
-				    <td># <?php echo $row["purchase_amount"]; ?></td>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
             <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
             <td><?php echo $row["authorized"]; ?></td>
             <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
