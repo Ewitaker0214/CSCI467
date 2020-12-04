@@ -61,6 +61,7 @@
     }
     else
     {
+      if (isset($_GET("action") && $_GET("action") == "add") {
       if(empty($_POST["name"]))
       {
         echo "<script>alert(\"Name is required\")</script>";
@@ -102,7 +103,7 @@
       echo "<script>enable();</script>";
     }
     }
-
+}
   }
 ?>
 
@@ -118,11 +119,11 @@
     <span style="color:red">* required field </span>
     <form method="POST" action="./order.php?action=add">
         <label for="name">Name: </label>
-        <input type="text" name="name" value="<?php echo $name; ?>" required/><span style="color:red">* <?php echo $ErrName; ?></span>
+        <input type="text" name="name" value="<?php echo $name; ?>" required/><span style="color:red">*</span>
         <label for="email">Email: </label>
-        <input type="text" name="email" value="<?php echo $email; ?>" required/><span style="color:red">* <?php echo $ErrEmail; ?></span>
+        <input type="text" name="email" value="<?php echo $email; ?>" required/><span style="color:red">*</span>
         <label for="address">Address: </label>
-        <input type="text" name="address" value="<?php echo $address; ?>" required/><span style="color:red">* <?php echo $ErrAddress; ?></span>
+        <input type="text" name="address" value="<?php echo $address; ?>" required/><span style="color:red">*</span>
         <input type="submit" name="continue" value="Continue"/>
           <label for="card_number">Card Number: </label>
           <input class="card_info" type="text" name="card_number" value="" required disabled/>
