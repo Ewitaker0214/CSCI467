@@ -2,10 +2,22 @@
   session_start();
   $username = 'student';
   $password = 'student';
-  $connected = false;
+  $connected1 = false;
   try { // if something goes wrong, an exception is thrown
     $dsn = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
     $pdo_legacy = new PDO($dsn, $username, $password, array('port' => '3306'));
+    $connected = true;
+  }
+  catch(PDOexception $e) { // handle that exception
+    echo "Connection to database failed: " . $e->getMessage();
+  }
+
+  $username = 'z1845428';
+  $password = '2000Jan13';
+  $connected2 = false;
+  try { // if something goes wrong, an exception is thrown
+    $dsn = "mysql:host=courses;dbname=z1845428";
+    $pdo = new PDO($dsn, $username, $password);
     $connected = true;
   }
   catch(PDOexception $e) { // handle that exception
@@ -105,7 +117,7 @@
         <!--<th>Available Quantity</th>-->
       </tr>
       <?php
-      if($connected)
+      if($connected1)
       {
         $rs = $pdo_legacy->query("SELECT number, description, price, pictureURL FROM parts;");
         $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
@@ -134,7 +146,7 @@
     </div>
     <br/>
     <a id="shopping_cart"><h3>Shopping Cart</h3></a>
-    <p><span style="color:red"><?php echo $quantity_error; ?></span></p>
+    <span style="color:red"><?php echo $quantity_error; ?></span>
     <div class="">
       <form method="POST" action="./order.php">
         <table border=1 cellspaces=1 id="">
@@ -181,37 +193,5 @@
 <footer>
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
-<!--<script>
-/*var selectBox = document.getElementById("order_selection");
-var selectedValue;
-var slideIndex = 1;
-showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var items = document.getElementsByClassName("item");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-
-  slides[slideIndex-1].style.display = "block";
-}
-
-// Thumbnail image controls
-function currentSlide() {
-  selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  for(let i = 0; i <= selectBox.options.length - 1; i++) {
-    console.log(i);
-    if (selectBox.options[i].value == selectedValue) showSlides(slideIndex = i);
-  }
-}*/
-</script>-->
 </html>
