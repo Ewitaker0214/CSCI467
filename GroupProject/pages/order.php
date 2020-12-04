@@ -216,7 +216,7 @@ function closeForm(){
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
         </form>
         <?php
-        /*if ($valid)
+        if ($valid)
         {
           echo "<h2>Total:" . $amount . " (taxes included) </hr>";
           echo "<script>enable();</script>";
@@ -224,7 +224,7 @@ function closeForm(){
         if ($_SESSION["complete"])
         {
           echo "<script>closeForm();</script>";
-        }*/
+        }
          ?>
     </div>
   </main>
