@@ -148,7 +148,7 @@ switch (true)
       		{
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-			
+		}	
 	foreach ($rows as $row)
         {
         ?>
@@ -180,7 +180,7 @@ switch (true)
         </form>
         <?php
 			}	
-		}
+		
 		break;
 
 	case isset($_POST["submit2"]):
@@ -188,7 +188,7 @@ switch (true)
       		{
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-			
+		}	
 	foreach ($rows as $row)
         {
         ?>
@@ -228,7 +228,7 @@ switch (true)
       		{
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-			
+		}	
 	foreach ($rows as $row)
         {
         ?>
@@ -259,7 +259,7 @@ switch (true)
           </tr>
         </form>
         <?php
-			}	
+				
 		}
 		break;
 
@@ -268,7 +268,7 @@ switch (true)
       		{
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-			
+		}	
 	foreach ($rows as $row)
         {
         ?>
@@ -299,7 +299,7 @@ switch (true)
           </tr>
         </form>
         <?php
-			}	
+				
 		}
 		break;
 }
