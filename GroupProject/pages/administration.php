@@ -135,7 +135,7 @@ switch (true) //switch statment that decides which form was submitted
 		if($connected)
       		{
 			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
-			$result = mysql_query($SBD)
+			$result = mysql_query($SBD);
 			//$result = $pdo->query($SBD);
 			//$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 	//populates the table with returned results
