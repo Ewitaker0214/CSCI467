@@ -73,7 +73,7 @@
         $name = $_POST["name"];
         if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
         {
-        $ErrName = "Only letters and whitespace allowed"
+        $ErrName = "Only letters and whitespace allowed";
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
