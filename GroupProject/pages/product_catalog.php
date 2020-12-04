@@ -39,7 +39,7 @@
     if($quantity < 0 || $quantity > $in_stock)
     {
       $quantity_error = "Error, invalid quantity selected!";
-      echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
+      //echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
     }
     else if ($quantity == 0)
     {
