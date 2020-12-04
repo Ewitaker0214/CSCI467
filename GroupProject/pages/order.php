@@ -25,7 +25,7 @@ function closeForm(){
 }
 </script>
 <?PHP
-session_start();
+  session_start();
   $username = 'student';
   $password = 'student';
   $connected1 = false;
@@ -50,12 +50,13 @@ session_start();
     echo "Connection to database failed: " . $e->getMessage();
   }
   $amount = 0;
-  if(isset($_POST["amount"])){
-  $_SESSION["amount"] = $_POST["amount"];
-}
-if(isset($_SESSION["amount"])){
-$amount = $_SESSION["amount"] ;
-}
+  if(isset($_POST["amount"]))
+  {
+    $_SESSION["amount"] = $_POST["amount"];
+  }
+  if(isset($_SESSION["amount"])){
+    $amount = $_SESSION["amount"] ;
+  }
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
@@ -65,26 +66,27 @@ $amount = $_SESSION["amount"] ;
   {
     if(isset($_POST["submit"]))
     {
-      if (isset($_GET["action"] )){
-        if ($_GET["action"] == "add") {
-          if (isset($taxes))
-    {
-      $amount *= $taxes;
-    }
-    else {
-      $taxes = 0.15;
-      $amount = ($amount * $taxes) + $amount;
-    }
+      if (isset($taxes))
+      {
+        $amount *= $taxes;
+      }
+      else
+      {
+        $taxes = 0.15;
+        $amount = ($amount * $taxes) + $amount;
+      }
       if(empty($_POST["card_number"]))
       {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
-      }else{
+      }
+      else
+      {
         $card_num = $_POST["card_number"];
         if(!preg_match("/^\d{16}|\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}$/", $card_num))
         {
-        echo "<script>alert(\"Invalid Card Number\")</script>";
-        echo "<script>window.location=\"order.php\"</script>";
+          echo "<script>alert(\"Invalid Card Number\")</script>";
+          echo "<script>window.location=\"order.php\"</script>";
         }
       }
       if(empty($_POST["expiration_date"]))
@@ -92,7 +94,8 @@ $amount = $_SESSION["amount"] ;
         echo "<script>alert(\"Invalid Expiration Date\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
       }
-      else {
+      else
+      {
         $expire_date = $_POST["expiration_date"];
         if(!preg_match("/^(0[1-9]|1[0-2])\/[0-9]{4}$/", $expire_date))
         {
@@ -100,78 +103,81 @@ $amount = $_SESSION["amount"] ;
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-$url = "http://blitz.cs.niu.edu/CreditCard/";
-$data = array(
-   "vendor" => "Group9A",
-    "trans" => rand(),
-     "cc" => $card_num,
-      "name" => $name,
-       "exp" => $expire_date,
+      $url = "http://blitz.cs.niu.edu/CreditCard/";
+      $data = array(
+        "vendor" => "Group9A",
+        "trans" => rand(),
+        "cc" => $card_num,
+        "name" => $name,
+        "exp" => $expire_date,
         "amount" => $amount);
 
-  $options = array(
-    'http' => array(
-  'header' => array('Content-type: application/json', 'Accept: application/json'),
-  'method' => 'POST',
-  'content'=> json_encode($data)
-)
-);
+        $options = array(
+          'http' => array(
+            'header' => array('Content-type: application/json', 'Accept: application/json'),
+            'method' => 'POST',
+            'content'=> json_encode($data)));
 
-$context  = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
-echo $result;
-if (!preg_match("/.*errors.*/", $result))
-{
-  echo "<script>alert(\"Here\")</script>";
-echo "<h1>Your Transaction Number is: " . $result ."</h1>";
-}
-else {
-echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
-}
-$_SESSION["complete"] = true;
-    else
-    {
-      if(empty($_POST["name"]))
-      {
-        echo "<script>alert(\"Name is required\")</script>";
-        echo "<script>window.location=\"order.php\"</script>";
-      }
-      else
-      {
-        $name = $_POST["name"];
-        if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
-        {
-        echo "<script>alert(\"Only letters and whitespace allowed\")</script>";
-        echo "<script>window.location=\"order.php\"</script>";
+            $context  = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            echo $result;
+            if (!preg_match("/.*errors.*/", $result))
+            {
+              echo "<script>alert(\"Here\")</script>";
+              echo "<h1>Your Transaction Number is: " . $result ."</h1>";
+            }
+            else
+            {
+              echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
+            }
+            $_SESSION["complete"] = true;
+          }
+          else
+          {
+          if (isset($_GET["action"] ))
+          {
+            if ($_GET["action"] == "add")
+            {
+              if(empty($_POST["name"]))
+              {
+                echo "<script>alert(\"Name is required\")</script>";
+                echo "<script>window.location=\"order.php\"</script>";
+              }
+              else
+              {
+                $name = $_POST["name"];
+                if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
+                {
+                  echo "<script>alert(\"Only letters and whitespace allowed\")</script>";
+                  echo "<script>window.location=\"order.php\"</script>";
+                }
+              }
+              if (empty($_POST["email"]))
+              {
+                echo "<script>alert(\"Email is required\")</script>";
+              }
+              else
+              {
+                $email = $_POST["email"];
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+                {
+                  echo "<script>alert(\"Invalid email format\")</script>";
+                  echo "<script>window.location=\"order.php\"</script>";
+                }
+              }
+              if (empty($_POST["address"]))
+              {
+                echo "<script>alert(\"Email is required\")</script>";
+                echo "<script>window.location=\"order.php\"</script>";
+              }
+              else
+              {
+                $address = $_POST["address"];
+              }
+              $valid = true;
+            }
+          }
         }
-      }
-      if (empty($_POST["email"]))
-      {
-        echo "<script>alert(\"Email is required\")</script>";
-      }
-      else
-      {
-        $email = $_POST["email"];
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-      {
-      echo "<script>alert(\"Invalid email format\")</script>";
-      echo "<script>window.location=\"order.php\"</script>";
-      }
-    }
-      if (empty($_POST["address"]))
-      {
-        echo "<script>alert(\"Email is required\")</script>";
-        echo "<script>window.location=\"order.php\"</script>";
-      }
-      else
-      {
-        $address = $_POST["address"];
-      }
-      $valid = true;
-    }
-    }
-}
-}
 ?>
 
 <header>
