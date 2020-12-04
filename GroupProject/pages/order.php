@@ -48,7 +48,7 @@ function enable()
 
   $card_num = $expire_date = "";
   $valid = false;
-  $amount = $_POST["amount"]
+  $amount = $_POST["amount"];
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     if(isset($_POST["submit"]))
