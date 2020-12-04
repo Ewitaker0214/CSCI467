@@ -51,7 +51,7 @@
 ?>
 
 <header>
-  <a href="../index.html"><h1>Home</h1></a>
+  <a href="../index.php"><h1>Home</h1></a>
 </header>
 
 <h1> Receiving Desk </h1>
