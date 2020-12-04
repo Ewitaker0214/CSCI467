@@ -125,7 +125,7 @@
         $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
         $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
         print_r($rs2);
-        if (!is_null($rs2)){
+        if (!is_bool($rs2)){
         foreach ($rows1 as $row1)
         {
       ?>
@@ -138,7 +138,7 @@
           <input type="hidden" name="description" value="<?php echo $row1["description"]; ?>"/>
           <td>$<?php echo $row1["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row1["price"]; ?>"/>
-          <td><?php if (!is_null($rs2)){foreach ( $rows2 as $row2 ) {if(row2["part_number"] == row1["number"] && row2["description"] == row1["description"]) echo $row2["in_stock"];}}
+          <td><?php if (!is_bool($rs2)){foreach ( $rows2 as $row2 ) {if(row2["part_number"] == row1["number"] && row2["description"] == row1["description"]) echo $row2["in_stock"];}}
                     else echo "0"?></td>
           <td><input type="text" name="quantity" value=0 /></td>
           <td><input type="submit" name="add_to_cart" value="Add to Cart"/></td>
