@@ -11,7 +11,7 @@
 function enable()
 {
   let tags = document.getElementsByClassName("card_info");
-  for(let i = 0; i < tags.length - 1; ++i)
+  for(let i = 0; i < tags.length; ++i)
   {
     tags[i].disabled = false;
   }
