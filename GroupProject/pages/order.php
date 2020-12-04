@@ -80,7 +80,7 @@ session_start();
 }
 else {
   $_SESSION["taxes"] = 0.15;
-  $amount = ($amount * $_SESSION["taxes"]) + $amount;
+  $_SESSION["amount"] = ($_SESSION["amount"] * $_SESSION["taxes"]) + $_SESSION["amount"];
 }
 $url = "http://blitz.cs.niu.edu/CreditCard/";
 $data = array(
