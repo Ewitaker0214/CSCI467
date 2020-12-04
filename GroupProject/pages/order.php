@@ -67,6 +67,9 @@ $amount = $_SESSION["amount"] ;
     {
       if(empty($_POST["card_number"]))
       {
+        echo "<script>alert(\"Invalid Card Number\")</script>";
+        echo "<script>window.location=\"order.php\"</script>";
+      }else{
         $card_num = $_POST["card_number"];
         if(!preg_match("/^\d{16}|\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
         {
@@ -76,6 +79,10 @@ $amount = $_SESSION["amount"] ;
       }
       if(empty($_POST["expiration_date"]))
       {
+        echo "<script>alert(\"Invalid Expiration Date\")</script>";
+        echo "<script>window.location=\"order.php\"</script>";
+      }
+      else {
         $expire_date = $_POST["expiration_date"];
         if(!preg_match("/^(0[1-9]1[0-2])\/[0-9]{4}$/", $expire_date))
         {
@@ -83,15 +90,6 @@ $amount = $_SESSION["amount"] ;
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-      if (isset($taxes))
-{
-  $amount *= $taxes;
-}
-else {
-  echo "<script>alert(\"Here\")</script>";
-  $taxes = 0.15;
-  $amount = ($amount * $taxes) + $amount;
-}
 $url = "http://blitz.cs.niu.edu/CreditCard/";
 $data = array(
    "vendor" => "Group9A",
@@ -125,6 +123,15 @@ $complete = true;
     {
       if (isset($_GET["action"] )){
         if ($_GET["action"] == "add") {
+          if (isset($taxes))
+    {
+      $amount *= $taxes;
+    }
+    else {
+      echo "<script>alert(\"Here\")</script>";
+      $taxes = 0.15;
+      $amount = ($amount * $taxes) + $amount;
+    }
       if(empty($_POST["name"]))
       {
         echo "<script>alert(\"Name is required\")</script>";
