@@ -8,17 +8,6 @@
 </head>
 
 <?PHP
-  $username = 'student';
-  $password = 'student';
-  $connected = false;
-  try { // if something goes wrong, an exception is thrown
-    $dsn = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
-    $pdo_legacy = new PDO($dsn, $username, $password, array('port' => '3306'));
-    $connected = true;
-  }
-  catch(PDOexception $e) { // handle that exception
-    echo "Connection to database failed: " . $e->getMessage();
-  }
   $username = 'z1845428';
   $password = '2000Jan13';
   $connected = false;
