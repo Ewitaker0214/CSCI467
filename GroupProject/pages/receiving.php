@@ -6,8 +6,6 @@
   <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
-
-  <h1> Receiving Desk </h1>
   
 <?PHP
   $username = 'student';
@@ -41,6 +39,8 @@
   <a href="../index.html"><h1>Home</h1></a>
 </header>
 
+<h1> Receiving Desk </h1>
+  
 <body>
   <main id="">
 
