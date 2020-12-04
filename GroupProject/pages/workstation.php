@@ -45,7 +45,7 @@
 <body>
   <main id="">
  
-  <--!form to print packing list based on a range of dates-->
+  <!--form to print packing list based on a range of dates-->
   <header> Packing List  
     <form action="workstation.php" method="post">
     <label for="sDate">Starting Date:</label>
