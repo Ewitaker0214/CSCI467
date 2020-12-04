@@ -40,7 +40,11 @@
      We Print that cause we want to see it. also it's in an associative array. */
   $rs = $pdo_legacy->query("SELECT number, description from parts;");
   print_r($rs->fetchALL(PDO::FETCH_ASSOC));
-
+  
+    foreach($row as $row){
+        echo "Number= " . $row["number"] . "Description= " . $row["description"];
+        echo "<br>";
+  }
   
  // now i need to store/insert the contents of the parts table to our Product table from out group prohect database
   
