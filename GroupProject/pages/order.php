@@ -59,7 +59,7 @@ $amount = $_SESSION["amount"] ;
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
-  $valid = $complete = false;
+  $valid = $_SESSION["complete"] = false;
 
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
@@ -111,12 +111,13 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 if (!preg_match("/^.*[errors].*/", $result))
 {
+  echo "<script>alert(\"Here\")</script>";
 echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 }
 else {
 echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
 }
-$complete = true;
+$_SESSION["complete"] = true;
     }
     else
     {
@@ -202,7 +203,7 @@ $complete = true;
           echo "<h2>Total:" . $amount . " (taxes included) </hr>";
           echo "<script>enable();</script>";
         }
-        if ($valid){
+        if ($_SESSION["complete"]){
           echo "<script>closeForm();</script>";
         }
          ?>
