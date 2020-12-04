@@ -140,7 +140,7 @@ switch (true) //switch statment that decides which form was submitted
 			//$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
 	//foreach ($rows as $row) //populates the table with returned results
-	While($row = myqsl_fetch_array($result))		
+	while($row = myqsl_fetch_array($result))		
         {
         ?>
         <form method="POST" action="administration.php">
