@@ -140,6 +140,7 @@ switch (true)
 	case isset($_POST["submit1"]):
 		if($connected)
       		{
+			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -180,6 +181,7 @@ switch (true)
 	case isset($_POST["submit2"]):
 		if($connected)
       		{
+			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .""
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -220,6 +222,7 @@ switch (true)
 	case isset($_POST["submit3"]):
 		if($connected)
       		{
+			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -260,6 +263,7 @@ switch (true)
 	case isset($_POST["submit4"]):
 		if($connected)
       		{
+			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -298,10 +302,10 @@ switch (true)
 		break;
 }
 	      //SQL SEARCH STATMENTS
-$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
-$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
-$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
-$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
+//$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
+//$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+//$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
+//$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 ?>
     </table>
   </main>
