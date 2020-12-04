@@ -31,6 +31,7 @@
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
+?>
   
 <header>
   <a href="../index.html"><h1>Home</h1></a>
