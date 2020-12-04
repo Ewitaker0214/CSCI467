@@ -54,8 +54,9 @@ function closeForm(){
   {
     $_SESSION["amount"] = $_POST["amount"];
   }
-  if(isset($_SESSION["amount"])){
-    $amount = $_SESSION["amount"] ;
+  if(isset($_SESSION["amount"]))
+  {
+    $amount = $_SESSION["amount"];
   }
   $name = $email = $address = "";
 
@@ -138,6 +139,15 @@ function closeForm(){
           {
             if ($_GET["action"] == "add")
             {
+              if (isset($taxes))
+              {
+                $amount *= $taxes;
+              }
+              else
+              {
+                $taxes = 0.15;
+                $amount = ($amount * $taxes) + $amount;
+              }
               if(empty($_POST["name"]))
               {
                 echo "<script>alert(\"Name is required\")</script>";
@@ -205,11 +215,13 @@ function closeForm(){
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
         </form>
         <?php
-        if ($valid){
+        if ($valid)
+        {
           echo "<h2>Total:" . $amount . " (taxes included) </hr>";
           echo "<script>enable();</script>";
         }
-        if ($_SESSION["complete"]){
+        if ($_SESSION["complete"])
+        {
           echo "<script>closeForm();</script>";
         }
          ?>
