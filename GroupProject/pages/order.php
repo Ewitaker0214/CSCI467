@@ -124,7 +124,7 @@ function closeForm(){
             if (!preg_match("/.*(errors).*/", $result))
             {
               $substrpos = strpos($result, "_id");
-              $substr = substr($result, $substrpos)
+              $substr = substr($result, $substrpos);
               echo "<h1>Your Transaction Number is: " . $substr ."</h1>";
               $complete = true;
             }
