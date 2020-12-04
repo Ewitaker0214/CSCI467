@@ -53,7 +53,7 @@ function enable()
   {
     if(isset($_POST["submit"]))
     {
-      $_SESSION["amount"] = $_POST["amount"];
+      $amount = $_POST["amount"];
       if(empty($_POST["card_number"]))
       {
         $card_num = $_POST["card_number"];
@@ -74,11 +74,11 @@ function enable()
       }
       if (isset($_SESSION["taxes"]))
 {
-  $amount = $_POST["total"] * $_SESSION["taxes"];
+  $amount *= $_SESSION["taxes"];
 }
 else {
   $_SESSION["taxes"] = 0.15;
-  $amount = ($_POST["amount"] * $_SESSION["taxes"]) + $_POST["amount"];
+  $amount = ($amount * $_SESSION["taxes"]) + $amount;
 }
 $url = "http://blitz.cs.niu.edu/CreditCard/";
 $data = array(
