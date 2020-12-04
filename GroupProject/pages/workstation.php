@@ -51,7 +51,7 @@
   <input type="date" id="sDate" name="sDate">
    
   <label for="eDate">End Date:</label>
-	<input type="date" id="eDate" name="eDate" >
+  <input type="date" id="eDate" name="eDate" >
 		      	 
   <p><input type="submit" name="submit1" value="Print"></p>                                        
    
