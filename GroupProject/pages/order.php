@@ -98,7 +98,7 @@ $data = array(
      "cc" => $card_num,
       "name" => $name,
        "exp" => $expire_date,
-        "amount" => $_SESSION["amount"]);
+        "amount" => $amount);
 
   $options = array(
     'http' => array(
@@ -110,7 +110,7 @@ $data = array(
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
-if (!preg_match("/^errors.*/", $result))
+if (!preg_match("/^[errors].*/", $result))
 {
 echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 }
