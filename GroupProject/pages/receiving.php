@@ -39,7 +39,7 @@
   /* Now that we did that it's business time! Using the legacy DB we list the contents from the parts Table.
      We Print that cause we want to see it. also it's in an associative array. */
   $rs = $pdo_legacy->query("SELECT number, description from parts;");
-  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
+  $row = $rs->fetchALL(PDO::FETCH_ASSOC);
   
     foreach($row as $row){
         echo "Number= " . $row["number"] . "Description= " . $row["description"];
