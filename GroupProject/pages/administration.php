@@ -130,7 +130,7 @@ $SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . 
 $SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 $SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
 $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
-?>
+	      
 switch (true) 
 {
 	case isset($_POST["submit"]):
@@ -144,11 +144,11 @@ switch (true)
 			break;
 
 	case isset($_POST["submit1"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-		}	
+			
 	foreach ($rows as $row)
         {
         ?>
@@ -179,15 +179,16 @@ switch (true)
           </tr>
         </form>
         <?php
+	}
 	}		
 		break;
 
 	case isset($_POST["submit2"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-		}	
+			
 	foreach ($rows as $row)
         {
         ?>
@@ -219,14 +220,15 @@ switch (true)
         </form>
         <?php	
 	}
+		}
 		break;
 
 	case isset($_POST["submit3"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-		}	
+			
 	foreach ($rows as $row)
         {
         ?>
@@ -258,14 +260,15 @@ switch (true)
         </form>
         <?php		
 		}
+		}
 		break;
 
 	case isset($_POST["submit4"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-		}	
+			
 	foreach ($rows as $row)
         {
         ?>
@@ -296,7 +299,7 @@ switch (true)
           </tr>
         </form>
         <?php
-				
+	}		
 		}
 		break;
 }
