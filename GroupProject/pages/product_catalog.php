@@ -176,7 +176,8 @@
         ?>
         <tr>
           <td colspan=2 >Total: </td>
-          <td>$<input type="text" name="amount" value="<?php echo $total; ?>"</td>
+          <input type="text" name="amount" value="<?php echo $total; ?>"hidden/>
+          <td>$<?php echo $total; ?>"</td>
           <td colspan=2 ><input type="submit" name="complete_order" value="Complete Order"/></td>
         </tr>
         <?php
