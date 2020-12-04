@@ -6,10 +6,9 @@
   <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
-
-  <h1> Receiving Desk </h1>
-
+  
 <?PHP
+  session_start();
   $username = 'student';
   $password = 'student';
   $connected = false;
@@ -21,6 +20,7 @@
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
+  
   $username = 'z1845428';
   $password = '2000Jan13';
   $connected = false;
@@ -34,13 +34,15 @@
   }
 
   $rs = $pdo_legacy->query("DESCRIBE Parts;");
-  $part = ($rs->fetchALL(PDO::FETCH_ASSOC));
+  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
 <header>
   <a href="../index.html"><h1>Home</h1></a>
 </header>
 
+<h1> Receiving Desk </h1>
+  
 <body>
   <main id="">
 
