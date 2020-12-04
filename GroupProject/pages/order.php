@@ -65,13 +65,23 @@ $amount = $_SESSION["amount"] ;
   {
     if(isset($_POST["submit"]))
     {
+      if (isset($_GET["action"] )){
+        if ($_GET["action"] == "add") {
+          if (isset($taxes))
+    {
+      $amount *= $taxes;
+    }
+    else {
+      $taxes = 0.15;
+      $amount = ($amount * $taxes) + $amount;
+    }
       if(empty($_POST["card_number"]))
       {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
       }else{
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^\d{16}|6011[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
+        if(!preg_match("/^\d{16}|\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -110,7 +120,7 @@ $data = array(
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 echo $result;
-if (!preg_match("/^.*[errors].*/", $result))
+if (!preg_match("/.*errors.*/", $result))
 {
   echo "<script>alert(\"Here\")</script>";
 echo "<h1>Your Transaction Number is: " . $result ."</h1>";
@@ -122,16 +132,6 @@ $_SESSION["complete"] = true;
     }
     else
     {
-      if (isset($_GET["action"] )){
-        if ($_GET["action"] == "add") {
-          if (isset($taxes))
-    {
-      $amount *= $taxes;
-    }
-    else {
-      $taxes = 0.15;
-      $amount = ($amount * $taxes) + $amount;
-    }
       if(empty($_POST["name"]))
       {
         echo "<script>alert(\"Name is required\")</script>";
