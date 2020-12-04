@@ -84,7 +84,7 @@ $amount = $_SESSION["amount"] ;
       }
       else {
         $expire_date = $_POST["expiration_date"];
-        if(!preg_match("/^(0[1-9]1[0-2])\/[0-9]{4}$/", $expire_date))
+        if(!preg_match("/^(0[1-9]|1[0-2])\/[0-9]{4}$/", $expire_date))
         {
         echo "<script>alert(\"Invalid Expiration Date\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -128,7 +128,6 @@ $complete = true;
       $amount *= $taxes;
     }
     else {
-      echo "<script>alert(\"Here\")</script>";
       $taxes = 0.15;
       $amount = ($amount * $taxes) + $amount;
     }
