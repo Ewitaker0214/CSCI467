@@ -59,7 +59,7 @@ session_start();
       if(empty($_POST["card_number"]))
       {
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^[0-9]{16,17}$/", $card_num))
+        if(!preg_match("/^[0-9]{16}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -68,7 +68,7 @@ session_start();
       if(empty($_POST["expiration_date"]))
       {
         $expire_date = $_POST["expiration_date"];
-        if(!preg_match("/^[0-12]\"[0-28]$/", $expire_date))
+        if(!preg_match("/^[0-2][0-9]-[0-3][0-9]$/", $expire_date))
         {
         echo "<script>alert(\"Invalid Expiration Date\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -89,7 +89,7 @@ $data = array(
      "cc" => $card_num,
       "name" => $name,
        "exp" => $expire_date,
-        "amount" => $amount);
+        "amount" => $_SESSION["amount"]);
 
   $options = array(
     'http' => array(
@@ -179,6 +179,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
           <label for="expiration_date">Expiration Date: </label>
           <input class="card_info" type="text" name="expiration_date" value="" required disabled/>
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
+          <h2>Total: <?php echo $_SESSION["amount"]
         </form>
         <?php
         if ($valid){
