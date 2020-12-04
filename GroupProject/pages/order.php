@@ -60,6 +60,7 @@
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
+        echo "<script>enable();</script>";
     }
     else
     {
@@ -120,10 +121,10 @@
         <input type="text" name="address" value="<?php echo $address; ?>" required/><span style="color:red">* <?php echo $ErrAddress; ?></span>
         <input type="submit" name="continue" value="Continue"/>
           <label for="card_number">Card Number: </label>
-          <input type="text" name="card_number" value="" required disabled/>
+          <input class="card_info" type="text" name="card_number" value="" required disabled/>
           <label for="expiration_date">Expiration Date: </label>
-          <input type="text" name="expiration_date" value="" required disabled/>
-          <input type="submit" name="submit" value="Submit" disabled/>
+          <input class="card_info" type="text" name="expiration_date" value="" required disabled/>
+          <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
         </form>
     </div>
   </main>
@@ -132,5 +133,15 @@
 <footer>
   <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
+<script type="text/javascript">
+function enable()
+{
+  let tags = document.getElementsByClassName("card_info");
+  for(let i = 0; i < tags.length - 1; ++i)
+  {
+    tags[i].disabled = false;
+  }
+}
+</script>
 
 </html>
