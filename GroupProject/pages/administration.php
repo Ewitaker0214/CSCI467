@@ -138,10 +138,11 @@ switch (true) //switch statment that decides which form was submitted
 			$result = mysql_query($SBD)
 			//$result = $pdo->query($SBD);
 			//$rows = $result->fetchAll(PDO::FETCH_ASSOC);
-			
-	//foreach ($rows as $row) //populates the table with returned results
+	//populates the table with returned results
+	//foreach ($rows as $row) 
+	
 	while($row = myqsl_fetch_array($result))		
-        {
+	{
         ?>
         <form method="POST" action="administration.php">
           <tr>
