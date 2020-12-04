@@ -68,7 +68,7 @@ $amount = $_SESSION["amount"] ;
       if(empty($_POST["card_number"]))
       {
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^[0-9]{16}$/", $card_num))
+        if(!preg_match("/^\d{16}|\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -77,7 +77,7 @@ $amount = $_SESSION["amount"] ;
       if(empty($_POST["expiration_date"]))
       {
         $expire_date = $_POST["expiration_date"];
-        if(!preg_match("/^[0-2][0-9]\/20[0-3][0-9]$/", $expire_date))
+        if(!preg_match("/^(0[1-9]1[0-2])\/[0-9]{4}$/", $expire_date))
         {
         echo "<script>alert(\"Invalid Expiration Date\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
