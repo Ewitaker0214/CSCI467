@@ -83,7 +83,7 @@
       }
       else
       {
-        $email = $_POST["email"];
+        $email = $_POST["address"];
     // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL))
       {
