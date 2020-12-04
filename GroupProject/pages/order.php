@@ -72,8 +72,8 @@ $data = array(
     "trans" => rand(),
      "cc" => $card_num,
       "name" => $name,
-       "exp" => $expire_date
-        'amount' => '654.32');
+       "exp" => $expire_date,
+        "amount" => $amount);
 
   $options = array(
     'http' => array(
