@@ -102,7 +102,7 @@
 ?>
 
 <header>
-  <a href="../index.html">
+  <a href="../index.php">
     <h1>Home</h1>
   </a>
 </header>
