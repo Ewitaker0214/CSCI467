@@ -159,10 +159,10 @@
         <?php
         if(!empty($_SESSION["shopping_cart"]))
         {
-          $total = 0;
+          $_SESSION["total"] = 0;
           foreach($_SESSION["shopping_cart"] as $items => $values)
           {
-            $total += number_format($values["item_quantity"] * $values["item_price"], 2);
+            $_SESSION["total"] += number_format($values["item_quantity"] * $values["item_price"], 2);
         ?>
           <tr>
             <td># <?php echo $values["item_number"]; ?></td>
@@ -176,7 +176,7 @@
         ?>
         <tr>
           <td colspan=2 >Total: </td>
-          <td>$<?php echo $total; ?></td>
+          <td>$<?php echo $_SESSION["total"]; ?></td>
           <td colspan=2 ><input type="submit" name="complete_order" value="Complete Order"/></td>
         </tr>
         <?php
