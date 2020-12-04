@@ -76,7 +76,7 @@ session_start();
       }
       if (isset($_SESSION["taxes"]))
 {
-  $amount *= $_SESSION["taxes"];
+  $_SESSION["amount"] *= $_SESSION["taxes"];
 }
 else {
   $_SESSION["taxes"] = 0.15;
@@ -97,7 +97,7 @@ $data = array(
   'method' => 'POST',
   'content'=> json_encode($data)
 )
-);
+); 
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
