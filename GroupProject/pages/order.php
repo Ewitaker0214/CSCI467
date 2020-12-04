@@ -20,7 +20,6 @@ function enable()
 }
 </script>
 <?PHP
-session_start();
   $username = 'student';
   $password = 'student';
   $connected1 = false;
@@ -45,7 +44,7 @@ session_start();
     echo "Connection to database failed: " . $e->getMessage();
   }
   if(isset($_POST["amount"])){
-  $_SESSION["amount"] = $_POST["amount"];
+  $amount = $_POST["amount"];
 }
   $name = $email = $address = "";
 
