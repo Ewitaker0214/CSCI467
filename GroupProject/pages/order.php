@@ -46,102 +46,24 @@
 <body>
   <main id="">
     </div>
-    <form action="submission.php" method="POST">
-      <label>User</label>
-        <select name="user_ID" class="data">
-          <?php/*
-          if($connected){
-            $rs = $pdo->query("SELECT * FROM User;");
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($rows as $row) {
-              echo "<option value=" . $row["user_ID"] . ">" . $row["user_ID"] . " | " . $row["name"] . "</option>";
-            }
-          }
-          ?>
-        </select>
-      <label>Type</label>
-        <input list="type" name="type" value="" required >
-        <datalist id="type">
-          <?php
-          if($connected){
-            $rs = $pdo->query("SELECT DISTINCT type FROM Workout;");
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($rows as $row) {
-              echo "<option value=" . $row["type"] . ">" . $row["type"] . "</option>";
-            }
-          }
-          ?>
-        </datalist>
-      <label>Intensity</label>
-        <select name="intensity" class="data">
-          <option value="Light">Light</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Vigorous">Vigorous</option>
-        </select>
-      <label>Duration</label>
-        <input type="number" name="duration" step="1" value="" title="Enter Exercise Duration in minutes" required>
-      <input type="submit" name="enter_workout_submit" value="Enter Workout">
-    </form>
-
-    <h3 class="title" style="margin-top: 20px;">View Workout History</h3>
-    <form  action="submission.php" method="POST">
-      <label>User</label>
-        <select name="user_ID" class="data">
-          <?php
-          if($connected){
-            $rs = $pdo->query("SELECT * FROM User;");
-            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($rows as $row) {
-              echo "<option value=" . $row["user_ID"] . ">" . $row["user_ID"] . " | " . $row["name"] . "</option>";
-            }
-          }*/
-          ?>
-        </select>
-      <label>From</label>
-        <input type="date" id="from" name="from_date">
-      <label>To</label>
-        <input type="date" id="to" name="to_date">
-      <input type="submit" name="workout_history_submit" value="View History">
-    </form>-->
+    <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
+      <tr>
+        <td># <?php echo $row["number"]; ?></td>
+        <input type="hidden" name="number" value="<?php echo $row["number"]; ?>"/>
+        <td><img src="<?php echo $row["pictureURL"]; ?>" alt="Image of <?php echo $row["description"]; ?>"/></td>
+        <td><?php echo $row["description"]; ?></td>
+        <input type="hidden" name="description" value="<?php echo $row["description"]; ?>"/>
+        <td>$<?php echo $row["price"]; ?></td>
+        <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+        <td><input type="text" name="quantity" value=0 /></td>
+        <td><input type="submit" name="add_to_cart" value="Add to Cart"/></td>
+      </tr>
+      </form>
   </main>
 </body>
 
 <footer>
   <p>Created by the Wuhan Clan for NIU CSCI466 Group Project &copy; 4/20/2020</p>
 </footer>
-<script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-      slideIndex = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
-</script>
 
 </html>
