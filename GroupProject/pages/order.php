@@ -63,7 +63,7 @@
   $amount = $_SESSION["total"] * $_SESSION["taxes"];
 }
 else {
-  $_SESSION["taxes"] = 0.15
+  $_SESSION["taxes"] = 0.15;
   $amount = ($_SESSION["total"] * $_SESSION["taxes"]) + $_SESSION["total"];
 }
 $url = "http://blitz.cs.niu.edu/CreditCard/";
