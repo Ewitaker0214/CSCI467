@@ -71,7 +71,7 @@ $amount = $_SESSION["amount"] ;
         echo "<script>window.location=\"order.php\"</script>";
       }else{
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^\d{16}|\6011[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
+        if(!preg_match("/^\d{16}|6011[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
