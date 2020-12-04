@@ -129,7 +129,6 @@ else {
 echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
 }
 $_SESSION["complete"] = true;
-    }
     else
     {
       if(empty($_POST["name"]))
