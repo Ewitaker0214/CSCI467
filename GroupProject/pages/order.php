@@ -7,16 +7,6 @@
   <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
-<script type="text/javascript">
-function enable()
-{
-  let tags = document.getElementsByClassName("card_info");
-  for(let i = 0; i < tags.length - 1; ++i)
-  {
-    tags[i].disabled = false;
-  }
-}
-</script>
 
 <?PHP
   $username = 'student';
@@ -108,7 +98,16 @@ function enable()
       {
         $address = $_POST["address"];
       }
-      echo "<script>enable();</script>";
+      echo "<script type=\"text/javascript\">
+      function enable()
+      {
+        let tags = document.getElementsByClassName(\"card_info\");
+        for(let i = 0; i < tags.length - 1; ++i)
+        {
+          tags[i].disabled = false;
+        }
+      }
+      </script>";
     }
     }
 }
