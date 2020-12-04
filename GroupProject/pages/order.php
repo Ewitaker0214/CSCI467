@@ -132,6 +132,7 @@ function closeForm(){
             else
             {
               echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
+              echo "<script>window.location=\"order.php\"</script>";
             }
           }
           else
