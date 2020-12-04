@@ -34,7 +34,7 @@
   }
 
   $ErrName = $ErrEmail = $ErrAddress = "";
-  $name = $email = $address ="";
+  $name = $email = $address = "";
 
   $card_num = $expire_date = "";
 
@@ -83,7 +83,7 @@
       }
       else
       {
-        $email = $_POST["address"];
+        $address = $_POST["address"];
     // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL))
       {
