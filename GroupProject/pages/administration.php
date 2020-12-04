@@ -139,7 +139,6 @@ switch (true)
 		$_SESSION["bracket3"] = $_POST["bracket3"];
 		$_SESSION["bracket4"] = $_POST["bracket4"];
 		$_SESSION["bracket5"] = $_POST["bracket5"];
-		$_SESSION["bracket6"] = $_POST["bracket6"];
 		echo '<p>Shipping charges have been updated</p>';
 			break;
 
