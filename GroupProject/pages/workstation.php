@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Product System | Product Catalog</title>
+  <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
   <!--<link rel="stylesheet" href="../slideshow.css"/>-->
 </head>
