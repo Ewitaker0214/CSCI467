@@ -141,7 +141,7 @@ switch (true) //switch statment that decides which form was submitted
 	//populates the table with returned results
 	//foreach ($rows as $row) 
 	
-	while($row = myqsl_fetch_array($result))		
+	while($row = mysql_fetch_array($result))		
 	{
         ?>
         <form method="POST" action="administration.php">
