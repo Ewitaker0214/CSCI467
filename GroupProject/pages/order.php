@@ -11,11 +11,23 @@
 <?PHP
   $username = 'student';
   $password = 'student';
-  $connected = false;
+  $connected1 = false;
   try { // if something goes wrong, an exception is thrown
     $dsn = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
     $pdo_legacy = new PDO($dsn, $username, $password, array('port' => '3306'));
-    $connected = true;
+    $connected1 = true;
+  }
+  catch(PDOexception $e) { // handle that exception
+    echo "Connection to database failed: " . $e->getMessage();
+  }
+
+  $username = 'student';
+  $password = 'student';
+  $connected2 = false;
+  try { // if something goes wrong, an exception is thrown
+    $dsn = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
+    $pdo_legacy = new PDO($dsn, $username, $password, array('port' => '3306'));
+    $connected2 = true;
   }
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
@@ -82,7 +94,7 @@
       {
         $ErrEmail = "Email is required";
       }
-      
+
     }
     }
 
