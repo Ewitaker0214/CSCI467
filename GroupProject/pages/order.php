@@ -25,6 +25,7 @@ function closeForm(){
 }
 </script>
 <?PHP
+session_start();
   $username = 'student';
   $password = 'student';
   $connected1 = false;
@@ -48,8 +49,12 @@ function closeForm(){
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
-  if(!isset($_POST["amount"])){
-  $amount = $_POST["amount"];
+  $amount = 0;
+  if(isset($_POST["amount"])){
+  $_SESSION["amount"] = $_POST["amount"];
+}
+if(isset($_SESSION["amount"])){
+$amount = $_SESSION["amount"] ;
 }
   $name = $email = $address = "";
 
