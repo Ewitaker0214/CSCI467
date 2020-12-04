@@ -124,7 +124,6 @@
 
         $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
         if ($rs2 == 0){
-          echo "<script>alert(\"" . $rs2 . "\")</script>";
           $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
         }
         foreach ($rows1 as $row1)
