@@ -15,6 +15,7 @@ function enable()
   {
     tags[i].disabled = false;
   }
+  document.getElementsByClassName("name_info")[0].disabled = true;
 }
 </script>;
 
@@ -167,7 +168,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
         <input type="text" name="email" value="<?php echo $email; ?>" required/><span style="color:red">*</span>
         <label for="address">Address: </label>
         <input type="text" name="address" value="<?php echo $address; ?>" required/><span style="color:red">*</span>
-        <input type="submit" name="continue" value="Continue"/>
+        <input class="name_info" type="submit" name="continue" value="Continue"/>
           <label for="card_number">Card Number: </label>
           <input class="card_info" type="text" name="card_number" value="" required disabled/>
           <label for="expiration_date">Expiration Date: </label>
