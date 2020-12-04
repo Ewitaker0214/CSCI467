@@ -1,5 +1,5 @@
 
-INSERT INTO User (user_ID, name) VALUES
+INSERT INTO order_details (user_ID, name) VALUES
     (101112, 'Miles'),
     (107624, 'Carl'),
     (113474, 'Ted'),
