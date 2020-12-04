@@ -34,6 +34,7 @@
   }
 
   $rs = $pdo_legacy->query("DESCRIBE Parts;");
+  
   print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
