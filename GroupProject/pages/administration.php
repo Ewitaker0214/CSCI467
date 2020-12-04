@@ -179,8 +179,7 @@ switch (true)
           </tr>
         </form>
         <?php
-			}	
-		
+	}		
 		break;
 
 	case isset($_POST["submit2"]):
@@ -218,9 +217,8 @@ switch (true)
             <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
           </tr>
         </form>
-        <?php
-			}	
-		}
+        <?php	
+	}
 		break;
 
 	case isset($_POST["submit3"]):
@@ -258,8 +256,7 @@ switch (true)
             <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
           </tr>
         </form>
-        <?php
-				
+        <?php		
 		}
 		break;
 
