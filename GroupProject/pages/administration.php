@@ -130,7 +130,7 @@ $SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . 
 $SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 $SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
 $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
-?>
+	      
 switch (true) 
 {
 	case isset($_POST["submit"]):
