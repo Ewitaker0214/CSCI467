@@ -61,10 +61,10 @@
 <form action="administration.php" method="POST">
 <p>    
 	         <label for="sDate">Starting Date:</label>
-		 <input type="datetime-local" id="sDate" name="sDate" >
+		 <input type="datetime-local" id="sDate" name="sDate" value="1/1/2000 12:00 AM" >
 
             	 <label for="eDate">End Date:</label>
-		 <input type="datetime-local" id="eDate" name="eDate" >
+		 <input type="datetime-local" id="eDate" name="eDate" value="12/3/2020 12:00 AM" >
 		      	 
   		 <p><input type="submit" name="submit1" value="View"></p>
 <br>
@@ -73,10 +73,10 @@
 <form action="administration.php" method="POST">
 <p>              
 		 <label for="sPrice">Starting Price:</label>
-		 <input type="range" id="sPrice" name="sPrice" min="0" >
+		 <input type="range" id="sPrice" name="sPrice" min="0" value="0">
      
                  <label for="ePrice">Max Price:</label>
-            	 <input type="range" id="ePrice" name="ePrice" min="1">
+            	 <input type="range" id="ePrice" name="ePrice" min = "1" value="1">
 
 		 <p><input type="submit" name="submit2" value="View"></p>
 <br>       	   		 
