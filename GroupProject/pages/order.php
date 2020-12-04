@@ -58,40 +58,6 @@
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-      if (isset($_SESSION["taxes"]))
-      {
-        $amount = $_SESSION["total"] * $_SESSION["taxes"];
-      }
-      else {
-        $_SESSION["taxes"] = 0.15
-        $amount = ($_SESSION["total"] * $_SESSION["taxes"]) + $_SESSION["total"];
-      }
-      $url = "http://blitz.cs.niu.edu/CreditCard/";
-      $data = array(
-	       "vendor" => "Group9A",
-	        "trans" => rand(),
-	         "cc" => $card_num,
-	          "name" => $name,
-	           "exp" => $expire_date
-	            'amount' => '654.32');
-
-        $options = array(
-          'http' => array(
-        'header' => array('Content-type: application/json', 'Accept: application/json'),
-        'method' => 'POST',
-        'content'=> json_encode($data)
-    )
-);
-
-    $context  = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
-if (!preg_match("/^Error.*/", $result))
-{
-  echo "<h1>Your Transaction Number is: " . $result["_id"] ."</h1>";
-}
-else {
-  echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
-}
     }
     else
     {
