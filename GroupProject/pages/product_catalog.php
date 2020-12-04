@@ -123,9 +123,9 @@
         $rows1 = $rs1->fetchAll(PDO::FETCH_ASSOC);
 
         $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
-        $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
-        print_r($rs2);
         if (!is_bool($rs2)){
+          $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
+        }
         foreach ($rows1 as $row1)
         {
       ?>
@@ -147,7 +147,6 @@
         <?php
       }
     }
-  }
          ?>
         </table>
     </div>
