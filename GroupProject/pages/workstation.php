@@ -46,7 +46,7 @@
   <main id="">
  
   
-  <header> Packing List  //form to search packing list by date range
+  <header> Packing List  
     <form action="workstation.php" method="post">
     <label for="sDate">Starting Date:</label>
     <input type="date" id="sDate" name="sDate">
@@ -57,13 +57,13 @@
     <p><input type="submit" name="submit1" value="Print"></p>                                        
    
  
-  <header> Print Invoice & Shipping Label  //form to print invoice & label
+  <header> Print Invoice & Shipping Label  
     <form action="order.php" method="post">
     <br>Order #: <input type="text" name="number"><br>
     <input type="submit" name="submit" value="Print"><br><br>
     </form>
 
-  <header> Confirm Shipment //form to confirm shipment
+  <header> Confirm Shipment 
     <form action="order.php" method="post">
     Customer E-mail: <input type="text" name="number"><br>
     <input type="submit" name="submit" value="Confirm"><br><br>
