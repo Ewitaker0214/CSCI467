@@ -124,16 +124,16 @@ function closeForm(){
             echo $result;
             if (!preg_match("/.*(errors).*/", $result))
             {
-              echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
-              echo "<script>window.location=\"order.php\"</script>";
-            }
-            else
-            {
               $substrpos = strpos($result, "_id");
               $substr = substr($result, $substrpos+5);
               echo "<h1>Your Transaction Number is: " . $substr ."</h1>";
               $complete = true;
               $pdo->query("INSERT INTO Order_History (name, email, address, card_number, expiration_date, purchase_amount, authorized) VALUES ($name, $email, $address, $card_num, $expire_date, $amount, 1);");
+            }
+            else
+            {
+              echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
+              echo "<script>window.location=\"order.php\"</script>";
             }
           }
           else
