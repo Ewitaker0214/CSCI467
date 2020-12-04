@@ -48,8 +48,13 @@
   <header> Packing List
   <form action="workstation.php" method="post">
   <label for="sDate>Starting Date:</label>
-  <input type="date" name="sDate" value="sDate"><br><br>
-  </form>
+  <input type="date" name="sDate" name="sDate"><br><br>
+  
+  <label for="eDate">End Date:</label>
+	<input type="date" id="eDate" name="eDate" >	 
+   
+  <p><input type="submit" name="submit1" value="Print"></p>
+                                              
 
   <header> Print Invoice & Shipping Label
   <form action="order.php" method="post">
