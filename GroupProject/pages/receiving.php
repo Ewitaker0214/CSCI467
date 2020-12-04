@@ -7,6 +7,8 @@
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
 
+  <h1> Receiving Desk </h1>
+  
 <?PHP
   $username = 'student';
   $password = 'student';
