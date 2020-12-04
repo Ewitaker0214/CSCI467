@@ -86,6 +86,7 @@ $amount = $_SESSION["amount"] ;
       if (isset($taxes))
 {
   $amount *= $taxes;
+  echo "<script>alert(\"Here\")</script>";
 }
 else {
   $taxes = 0.15;
@@ -192,7 +193,7 @@ $complete = true;
         </form>
         <?php
         if ($valid){
-          echo "<h2>Total:" . $amount . "\"(taxes included)\" </hr>";
+          echo "<h2>Total:" . $amount . "(taxes included) </hr>";
           echo "<script>enable();</script>";
         }
         if ($valid){
