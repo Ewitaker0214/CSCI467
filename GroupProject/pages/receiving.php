@@ -33,7 +33,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $rs = $pdo_legacy->query("DESCRIBE Product;");
+  $rs = $pdo_legacy->query("DESCRIBE parts;");
   Print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
