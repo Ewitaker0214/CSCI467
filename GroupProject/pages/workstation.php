@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Warehouse Workstation</title>
+  <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
 
@@ -28,7 +28,7 @@
     $connected = true;
   }
   catch(PDOexception $e) { // handle that exception
-  echo "Connection to database failed: " . $e->getMessage();
+    echo "Connection to database failed: " . $e->getMessage();
   }
   
   //$rs = $pdo_legacy->query("DESCRIBE parts;");
@@ -38,6 +38,9 @@
 <header>
   <a href="../index.html"><h1>Home</h1></a>
 </header>
+
+<center>
+<h1>WAREHOUSE WORKSTATION</h1>
 
 <body>
   <main id="">
