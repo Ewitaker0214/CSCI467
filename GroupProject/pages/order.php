@@ -71,7 +71,6 @@
       else
       {
         $name = $_POST["name"];
-        echo "<script>alert(\"Name\")</script>";
         if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
         {
         echo "<script>alert(\"Only letters and whitespace allowed\")</script>";
@@ -98,8 +97,6 @@
       else
       {
         $address = $_POST["address"];
-        echo "<script>alert(\"Address\")</script>";
-        echo "<script>window.location=\"order.php\"</script>";
       }
       echo "<script>enable();</script>";
     }
