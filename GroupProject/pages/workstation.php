@@ -47,7 +47,7 @@
  
   <header> Packing List
   <form action="workstation.php" method="post">
-  <label for="sDate>Starting Date:</label>
+  Starting Date: <label for="sDate></label>
   <input type="date" name="sDate" value="sDate"><br><br>
   </form>
 
