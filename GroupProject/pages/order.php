@@ -221,7 +221,7 @@ function closeForm(){
           echo "<h2>Total:" . $amount . " (taxes included) </hr>";
           echo "<script>enable();</script>";
         }
-        if ($_SESSION["complete"])
+        if ($complete)
         {
           echo "<script>closeForm();</script>";
         }
