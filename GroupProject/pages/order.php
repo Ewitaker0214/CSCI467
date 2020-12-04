@@ -71,7 +71,7 @@ $amount = $_SESSION["amount"] ;
         echo "<script>window.location=\"order.php\"</script>";
       }else{
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^\d{16}|\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
+        if(!preg_match("/^\d{16}|\6011[- ]\d{4}[- ]\d{4}[- ]\d{4}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
@@ -109,10 +109,9 @@ $data = array(
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
-if (!preg_match("/^[errors].*/", $result))
+if (!preg_match("/^.*[errors].*/", $result))
 {
-  echo $result;
-//echo "<h1>Your Transaction Number is: " . $result ."</h1>";
+echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 }
 else {
 echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
