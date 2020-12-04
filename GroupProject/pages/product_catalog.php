@@ -26,6 +26,7 @@
 
   $quantity_error = "";
 
+
   $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Product;");
   $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
   $in_stock = -1;
