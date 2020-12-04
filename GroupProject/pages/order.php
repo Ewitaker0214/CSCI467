@@ -178,7 +178,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
         </form>
         <?php
-        if (valid){
+        if ($valid){
           echo "<script>enable();</script";
         }
          ?>
