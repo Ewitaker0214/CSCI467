@@ -42,6 +42,27 @@
 <header> WAREHOUSE WORKSTATION
 <body>
   <main id="">
+ 
+  <header> New Packing List
+  <form action="orders.php" method="post">
+  Date: <input type="text" name="name"><br>
+  <input type="submit" name="submit" value="Print"><br><br>
+  </form>
+
+  <header> Print Invoice & Shipping Label
+  <form action="order.php" method="post">
+  Order #: <input type="text" name="number"><br>
+  <input type="submit" name="submit" value="Print"><br><br>
+  </form>
+
+  <header> Confirm Shipment
+  if($connected){
+  <form action="order.php" method="post">
+  Customer E-mail: <input type="text" name="number"><br>
+  <input type="submit" name="submit" value="Confirm"><br><br>
+  </form>
+  $sql = "SELECT * FROM Order History WHERE authorization = 1 AND shipped = 0 ORDER BY     date_ordered DESC|ASC LIMIT 1";
+  }
 
   </main>
 </body>
