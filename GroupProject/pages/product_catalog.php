@@ -57,8 +57,8 @@
         else
         {
           echo "<script>alert(\"Item Already Added\")</script>";
-          echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
           echo "<script>alert(\"Hello\")</script>";
+          echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
         }
       }
       else
