@@ -123,7 +123,7 @@
         $rows1 = $rs1->fetchAll(PDO::FETCH_ASSOC);
 
         $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
-        if ($rs2 == 0)){
+        if ($rs2 == 0){
           $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
         }
         foreach ($rows1 as $row1)
