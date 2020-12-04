@@ -51,7 +51,7 @@ function enable()
 
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    if(!isset($amount)){$amount = $_POST["amount"];}
+    if(!is_null($amount)){$amount = $_POST["amount"];}
     if(isset($_POST["submit"]))
     {
       if(empty($_POST["card_number"]))
