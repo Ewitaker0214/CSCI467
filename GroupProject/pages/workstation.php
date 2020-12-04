@@ -22,6 +22,8 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
+<!doctype html>
+  
 <html lang="en">
 <head>
   <meta charset="utf-8">
