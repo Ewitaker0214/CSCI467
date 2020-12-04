@@ -64,10 +64,10 @@
 <form action="administration.php" method="POST">
 <p>              
 		 <label for="sPrice">Starting Price:</label>
-		 <input type="range" id="sPrice" name="sPrice" min="0" value="0">
+		 <input type="number" id="sPrice" name="sPrice" min="0" value="0">
      
                  <label for="ePrice">Max Price:</label>
-            	 <input type="range" id="ePrice" name="ePrice" min = "1" value="1">
+            	 <input type="number" id="ePrice" name="ePrice" min = "1" value="1">
 
 		 <p><input type="submit" name="submit2" value="View"></p>
 <br>       	   		 
