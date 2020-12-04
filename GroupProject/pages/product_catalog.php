@@ -75,9 +75,10 @@
 
   if(isset($_GET["action"]))
 {
+  echo "<script>alert(\"Hello\")</script>"
   if($_GET["action"] == "delete")
   {
-    echo "<script>alert(\"Hello\")</script>"
+    echo "<script>alert(\"Hello2\")</script>"
     foreach ($_SESSION["shopping_cart"] as $items => $values)
     {
       if($values["item_number"] == $_GET["number"])
