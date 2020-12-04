@@ -29,7 +29,14 @@
   if(isset($_POST["add_to_cart"]))
   {
     $quantity = $_POST["quantity"];
-    if($quantity < 0)
+    foreach ( $rows2 as $row2 )
+    {
+      if($row2["part_number"] == $_POST["number"] && $row2["description"] == $_POST["description"])
+      {
+        $in_stock= $row2["in_stock"];
+      }
+    }
+    if($quantity < 0 || $quantity > $in_stock)
     {
       $quantity_error = "Error, invalid quantity selected!";
       echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
