@@ -33,7 +33,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $ErrName = $ErrEmail = $ErrAddress = "Error";
+  $ErrName = $ErrEmail = $ErrAddress = "";
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
@@ -60,7 +60,6 @@
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-        echo "<script>enable();</script>";
     }
     else
     {
@@ -84,7 +83,7 @@
       }
       else
       {
-        $address = $_POST["address"];
+        $email = $_POST["email"];
     // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL))
       {
@@ -95,7 +94,11 @@
       {
         $ErrEmail = "Email is required";
       }
-
+      else
+      {
+        $address = $_POST["address"];
+      }
+      echo "<script>enable();</script>";
     }
     }
 
