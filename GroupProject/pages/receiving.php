@@ -34,7 +34,8 @@
   }
 
   $rs = $pdo_legacy->query("SELECT number, description from Parts;");
-  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
+  
+  //print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
 <header>
