@@ -124,7 +124,7 @@
 
         $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products;");
         print_r($rs2);
-        //$rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
+        $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows1 as $row1)
         {
@@ -134,7 +134,7 @@
           <td># <?php echo $row1["number"]; ?></td>
           <input type="hidden" name="number" value="<?php echo $row1["number"]; ?>"/>
           <td><img src="<?php echo $row1["pictureURL"]; ?>" alt="Image of <?php echo $row1["description"]; ?>"/></td>
-          <td><?php echo $row["description"]; ?></td>
+          <td><?php echo $row1["description"]; ?></td>
           <input type="hidden" name="description" value="<?php echo $row1["description"]; ?>"/>
           <td>$<?php echo $row1["price"]; ?></td>
           <input type="hidden" name="price" value="<?php echo $row1["price"]; ?>"/>
