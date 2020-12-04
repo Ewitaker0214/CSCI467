@@ -77,13 +77,15 @@
 {
   if($_GET["action"] == "delete")
   {
+    echo "<script>alert(\"Hello\")</script>"
     foreach ($_SESSION["shopping_cart"] as $items => $values)
     {
       if($values["item_number"] == $_GET["number"])
       {
         unset($_SESSION["shopping_cart"][$items]);
         echo "<script>alert(\"Item Removed\")</script>";
-        echo "<script>window.location=\"product_catalog/php#shopping_cart\"</script>";
+        echo "<script>window.location=\"./product_catalog.php#shopping_cart\"</script>";
+        echo "<script>alert(\"Alert 2\")</script>";
       }
     }
   }
