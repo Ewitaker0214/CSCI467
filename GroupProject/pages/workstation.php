@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
-  <!--<link rel="stylesheet" href="../slideshow.css"/>-->
 </head>
 
 <?PHP
@@ -29,8 +28,11 @@
     $connected = true;
   }
   catch(PDOexception $e) { // handle that exception
-    echo "Connection to database failed: " . $e->getMessage();
+  echo "Connection to database failed: " . $e->getMessage();
   }
+  
+  $rs = $pdo_legacy->query("DESCRIBE parts;");
+  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
   
 <header>
