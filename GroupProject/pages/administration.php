@@ -31,27 +31,25 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  //$rs = $pdo_legacy->query("DESCRIBE parts;");
-  //print_r($rs->fetchALL(PDO::FETCH_ASSOC));
+  $rs = $pdo_legacy->query("DESCRIBE parts;");
+  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
 <header>
-  <a href="../index.php"><h1>Home</h1></a>
+  <a href="../index.html"><h1>Home</h1></a>
 </header>
 
 <body>
   <main id="">
-	  
     <?PHP
     //SQL SEARCH STATMENTS
-$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] .""; //finds details by date
-$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. ""; //finds details by shipping status
-$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ; //finds details by price
-$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. ""; //finds details by authorization status
+$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
+$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
+$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 ?>
     <h2>Shipping and Handling Costs</h2>
-	  
-<!-- Form for updating the shipping charges -->
+
 <form method ="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <p>   0-10lbs: <input type ="number", name="bracket1" /></p>
@@ -66,9 +64,7 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
     <h2>Search For Order Details</h2>
 
 
-<!-- Forms for searching for Order Details  -->
-	  
-     <!--Form for searching by date --> 	  
+<!-- MAKE EACH SEARCH TYPE ITS OWN FORM, then make an if statement  -->
 <form action="administration.php" method="POST">
 <p>    
 	         <label for="sDate">Starting Date:</label>
@@ -81,7 +77,6 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <br>
 </p>
 
-	  <!-- form for searching by price -->
 <form action="administration.php" method="POST">
 <p>              
 		 <label for="sPrice">Starting Price:</label>
@@ -94,7 +89,6 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <br>       	   		 
 </p>
 
-	  <!-- form for searching by shipping status -->
 <form action="administration.php" method="POST">
 <p>              
 		 
@@ -108,7 +102,6 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <br>         	 		             	   		 
 </p>
 
-	  <!-- form for searching by authorization status -->
 <form action="administration.php" method="POST">
 <p>              
 		 
@@ -122,7 +115,6 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <br>          	 		             	   		 
 </p>
 
-	  <!-- table to display order details -->
   <h3 class="">Order Details</h3>
       <table border=1 cellspaces=1 id="">
       <tr>
@@ -139,25 +131,24 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 	      <th>Date Shipped</th>
       </tr>
 
-<?PHP 
-	      
-//switch statment for deciding which form was submitted and which search query to run
+<?PHP  
+
 switch (true) 
 {
-	case isset($_POST["submit"]): //posts simple message that the shipping charges were updated
+	case isset($_POST["submit"]):
 		echo "Shipping charges have been updated";
 			break;
 
-	case isset($_POST["submit1"]):// runs query by date
+	case isset($_POST["submit1"]):
 		if($connected2)
       		{
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)//pupulates the table with specified order details
+	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="administration.php"> 
+        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -188,16 +179,16 @@ switch (true)
 		}
 		break;
 
-	case isset($_POST["submit2"]): //runs query by price
+	case isset($_POST["submit2"]):
 		if($connected2)
       		{
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)//pupulates the table with specified order details
+	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="administration.php">
+        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -228,16 +219,16 @@ switch (true)
 		}
 		break;
 
-	case isset($_POST["submit3"])://runs query by shipping status
+	case isset($_POST["submit3"]):
 		if($connected2)
       		{
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)//pupulates the table with specified order details
+	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="administration.php">
+        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
@@ -268,16 +259,16 @@ switch (true)
 		}
 		break;
 
-	case isset($_POST["submit4"]): //runs query by authorization status
+	case isset($_POST["submit4"]):
 		if($connected2)
       		{
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)//pupulates the table with specified order details
+	foreach ($rows as $row)
         {
         ?>
-        <form method="POST" action="administration.php">
+        <form method="POST" action="./product_catalog.php?action=add#shopping_cart">
           <tr>
             <td># <?php echo $row["customer_id"]; ?></td>
             <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
