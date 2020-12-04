@@ -38,12 +38,12 @@ function closeForm(){
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $username = 'student';
-  $password = 'student';
+  $username = 'z1845428';
+  $password = '2000Jan13';
   $connected2 = false;
   try { // if something goes wrong, an exception is thrown
-    $dsn = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
-    $pdo_legacy = new PDO($dsn, $username, $password, array('port' => '3306'));
+    $dsn = "mysql:host=courses;dbname=z1845428";
+    $pdo = new PDO($dsn, $username, $password);
     $connected2 = true;
   }
   catch(PDOexception $e) { // handle that exception
@@ -124,9 +124,10 @@ function closeForm(){
             if (!preg_match("/.*(errors).*/", $result))
             {
               $substrpos = strpos($result, "_id");
-              $substr = substr($result, $substrpos);
+              $substr = substr($result, $substrpos+5);
               echo "<h1>Your Transaction Number is: " . $substr ."</h1>";
               $complete = true;
+              $pdo->query("INSERT INTO Order_History (name, email, address, card_number, expiration_date, purchase_amount, authorized) VALUES ($name, $email, $address, $card_num, $expire_date, $amount, 1);");
             }
             else
             {
