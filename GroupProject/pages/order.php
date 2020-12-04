@@ -121,16 +121,16 @@ function closeForm(){
 
             $context  = stream_context_create($options);
             $result = file_get_contents($url, false, $context);
-            echo $result;
             if (!preg_match("/.*(errors).*/", $result))
             {
-              echo "<script>alert(\"Here\")</script>";
-              echo "<h1>Your Transaction Number is: " . $result ."</h1>";
+              $substrpos = strpos($result, "_id");
+              $substr = substr($result, $substrpos)
+              echo "<h1>Your Transaction Number is: " . $substr ."</h1>";
+              $complete = true;
             }
             else
             {
               echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
-              $complete = true;
             }
           }
           else
