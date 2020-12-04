@@ -189,14 +189,14 @@ $complete = true;
           <label for="expiration_date">Expiration Date: </label>
           <input class="card_info" type="text" name="expiration_date" value="" required disabled/>
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
-          <h2>Total: <?php echo $amount . "(taxes included)" ?></hr>
         </form>
         <?php
         if ($valid){
-          echo "<script>enable();</script";
+          echo "<h2>Total: <?php echo $amount . \"(taxes included)\" ?></hr>";
+          echo "<script>enable();</script>";
         }
         if ($valid){
-          echo "<script>closeForm();</script";
+          echo "<script>closeForm();</script>";
         }
          ?>
     </div>
