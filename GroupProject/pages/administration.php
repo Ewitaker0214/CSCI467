@@ -181,7 +181,7 @@ switch (true)
 	case isset($_POST["submit2"]):
 		if($connected)
       		{
-			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .""
+			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."";
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
