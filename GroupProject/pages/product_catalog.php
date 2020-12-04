@@ -122,7 +122,7 @@
         $rs1 = $pdo_legacy->query("SELECT number, description, price, pictureURL FROM parts;");
         $rows1 = $rs1->fetchAll(PDO::FETCH_ASSOC);
 
-        $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Products");
+        $rs2 = $pdo->query("SELECT part_number, description, in_stock FROM Product;");
         if ($rs2 == 0)
         {
           $rows2 = $rs2->fetchAll(PDO::FETCH_ASSOC);
