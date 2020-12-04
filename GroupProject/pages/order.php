@@ -71,9 +71,9 @@ function enable()
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
-      if (isset($_SESSION["taxes"]))
+      if (isset($_POST["taxes"]))
 {
-  $amount = $_SESSION["total"] * $_SESSION["taxes"];
+  $amount = $_POST["total"] * $_POST["taxes"];
 }
 else {
   $_SESSION["taxes"] = 0.15;
