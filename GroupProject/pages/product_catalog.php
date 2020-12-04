@@ -181,7 +181,6 @@
         </tr>
         <?php
       }
-      $_SESSION["total"] = $total;
           ?>
           </table>
       </form>
