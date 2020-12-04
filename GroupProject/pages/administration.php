@@ -144,7 +144,7 @@ switch (true)
 			break;
 
 	case isset($_POST["submit1"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -184,7 +184,7 @@ switch (true)
 		break;
 
 	case isset($_POST["submit2"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -224,7 +224,7 @@ switch (true)
 		break;
 
 	case isset($_POST["submit3"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -264,7 +264,7 @@ switch (true)
 		break;
 
 	case isset($_POST["submit4"]):
-		if($connected2)
+		if($connected)
       		{
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
