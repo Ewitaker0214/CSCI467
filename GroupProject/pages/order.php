@@ -61,7 +61,7 @@ function closeForm(){
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
-  $valid = $_SESSION["complete"] = false;
+  $valid = $complete = false;
 
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
@@ -122,7 +122,7 @@ function closeForm(){
             $context  = stream_context_create($options);
             $result = file_get_contents($url, false, $context);
             echo $result;
-            if (!preg_match("/.*errors.*/", $result))
+            if (!preg_match("/.*(errors).*/", $result))
             {
               echo "<script>alert(\"Here\")</script>";
               echo "<h1>Your Transaction Number is: " . $result ."</h1>";
@@ -130,8 +130,8 @@ function closeForm(){
             else
             {
               echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
+              $complete = true;
             }
-            $_SESSION["complete"] = true;
           }
           else
           {
