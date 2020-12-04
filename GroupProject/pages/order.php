@@ -71,6 +71,7 @@
       else
       {
         $name = $_POST["name"];
+        echo "<script>alert(\"Name\")</script>";
         if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
         {
         $ErrName = "Only letters and whitespace allowed";
@@ -84,6 +85,7 @@
       else
       {
         $email = $_POST["email"];
+        echo "<script>alert(\"Email\")</script>";
     // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL))
       {
@@ -97,6 +99,7 @@
       else
       {
         $address = $_POST["address"];
+        echo "<script>alert(\"Address\")</script>";
       }
       echo "<script>enable();</script>";
     }
