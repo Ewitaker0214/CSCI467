@@ -72,10 +72,10 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 <form action="administration.php" method="POST">
 <p>    
 	         <label for="sDate">Starting Date:</label>
-		 <input type="date" id="sDate" name="sDate" >
+		 <input type="datetime-local" id="sDate" name="sDate" >
 
             	 <label for="eDate">End Date:</label>
-		 <input type="date" id="eDate" name="eDate" >
+		 <input type="datetime-local" id="eDate" name="eDate" >
 		      	 
   		 <p><input type="submit" name="submit1" value="View"></p>
 <br>
@@ -144,8 +144,13 @@ $SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]
 //switch statment for deciding which form was submitted and which search query to run
 switch (true) 
 {
-	case isset($_POST["submit"]): //posts simple message that the shipping charges were updated
-		echo "Shipping charges have been updated";
+	case isset($_POST["submit"]): //posts simple message that the shipping charges were updated, and updates the new shipping charges
+		$_SESSION["bracket1"] = $_POST["bracket1"];
+		$_SESSION["bracket2"] = $_POST["bracket2"];
+		$_SESSION["bracket3"] = $_POST["bracket3"];
+		$_SESSION["bracket4"] = $_POST["bracket4"];
+		$_SESSION["bracket5"] = $_POST["bracket5"];
+		echo '<p>Shipping charges have been updated</p>';
 			break;
 
 	case isset($_POST["submit1"]):// runs query by date
