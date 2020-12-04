@@ -1,12 +1,3 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Product System - Product Catalog</title>
-  <!--<link rel="stylesheet" href="../styles.css">-->
-</head>
-
 <?PHP
   $username = 'student';
   $password = 'student';
@@ -31,10 +22,15 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $rs = $pdo_legacy->query("DESCRIBE parts;");
-  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
-?>
-
+<!doctype html>
+  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Product System - Workstation</title>
+  <!--<link rel="stylesheet" href="../styles.css">-->
+</head>
+  
 <header>
   <a href="../index.html"><h1>Home</h1></a>
 </header>
