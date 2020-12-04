@@ -33,7 +33,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-  $ErrName = $ErrEmail = "";
+  $ErrName = $ErrEmail = $ErrAddress = "";
   $name = $email = $address ="";
 
   $card_num = $expire_date = "";
@@ -110,7 +110,7 @@
 <body>
   <main id="">
     <div>
-    <span style="color:red">* required field ?></span>
+    <span style="color:red">* required field </span>
     <form method="POST" action="./order.php?action=add">
         <label for="name">Name: </label>
         <input type="text" name="name" value="<?php echo $name; ?>" required/><span style="color:red">* <?php echo $ErrName; ?></span>
