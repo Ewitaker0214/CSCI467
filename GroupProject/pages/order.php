@@ -19,8 +19,8 @@ function enable()
   next[0].disabled = true;
 }
 </script>
-
 <?PHP
+session_start();
   $username = 'student';
   $password = 'student';
   $connected1 = false;
@@ -44,11 +44,14 @@ function enable()
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
+  if(isset($_POST["amount"])){
+  $_SESSION["amount"] = $_POST["amount"];
+}
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
   $valid = false;
-  $amount = $_POST["amount"];
+
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     if(isset($_POST["submit"]))
@@ -56,7 +59,7 @@ function enable()
       if(empty($_POST["card_number"]))
       {
         $card_num = $_POST["card_number"];
-        if(!preg_match("/^[0-9]{16,16}$/", $card_num))
+        if(!preg_match("/^[0-9]{16,17}$/", $card_num))
         {
         echo "<script>alert(\"Invalid Card Number\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
