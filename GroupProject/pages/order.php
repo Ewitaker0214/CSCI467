@@ -21,7 +21,7 @@ function enable()
 
 function closeForm(){
   let form = document.getElementById("credit_form");
-  form.style = "display: hidden";
+  form.style.display = "none";
 }
 </script>
 <?PHP
