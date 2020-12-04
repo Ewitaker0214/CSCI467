@@ -97,13 +97,13 @@ $data = array(
   'method' => 'POST',
   'content'=> json_encode($data)
 )
-); 
+);
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 if (!preg_match("/^Error.*/", $result))
 {
-echo "<h1>Your Transaction Number is: " . $result["_id"] ."</h1>";
+echo "<h1>Your Transaction Number is: " . $result ."</h1>";
 }
 else {
 echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
