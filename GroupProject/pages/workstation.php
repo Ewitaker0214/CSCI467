@@ -22,7 +22,7 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
-<!doctype html>
+//doctype html
   
 <html lang="en">
 <head>
@@ -64,6 +64,6 @@
 </body>
 
 <footer>
-  <p>Created by Group9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
+  <p>Created by Group 9A for NIU CSCI467 Group Project &copy; 12/04/2020</p>
 </footer>
 </html>
