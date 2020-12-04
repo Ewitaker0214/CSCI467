@@ -109,6 +109,7 @@ $data = array(
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
+echo $result;
 if (!preg_match("/^.*[errors].*/", $result))
 {
   echo "<script>alert(\"Here\")</script>";
