@@ -7,9 +7,6 @@
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
   
-<center>
-<h1>WAREHOUSE WORKSTATION</h1>
-
 <?PHP
   $username = 'student';
   $password = 'student';
@@ -42,13 +39,16 @@
   <a href="../index.html"><h1>Home</h1></a>
 </header>
 
+<center>
+<h1>WAREHOUSE WORKSTATION</h1>
+
 <body>
   <main id="">
  
-  <header> New Packing List
-  <form action="orders.php" method="post">
-  Date: <input type="text" name="name"><br>
-  <input type="submit" name="submit" value="Print"><br><br>
+  <header> Packing List
+  <form action="workstation.php" method="post">
+  Starting Date: <label for="sDate></label>
+  <input type="date" name="sDate" value="sDate"><br><br>
   </form>
 
   <header> Print Invoice & Shipping Label
