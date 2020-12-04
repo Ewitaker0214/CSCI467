@@ -7,7 +7,7 @@
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
 
-<?PHP
+<?PHP //connection to database
   $username = 'z1845428';
   $password = '2000Jan13';
   $connected = false;
@@ -30,8 +30,9 @@
 
 <body>
   <main id="">
-    <h2>Shipping and Handling Costs</h2>
+    <h2>Update Shipping and Handling Costs</h2>
 
+	  <!-- Form for updating the shipping/handling costs -->
 <form method ="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <p>   0-10lbs: <input type ="number", name="bracket1" /></p>
@@ -46,7 +47,7 @@
     <h2>Search For Order Details</h2>
 
 
-<!-- MAKE EACH SEARCH TYPE ITS OWN FORM, then make an if statement  -->
+<!-- Form for searching Order history by date  -->
 <form action="administration.php" method="POST">
 <p>    
 	         <label for="sDate">Starting Date:</label>
@@ -59,6 +60,7 @@
 <br>
 </p>
 
+	  <!-- form for searching Order history by price -->
 <form action="administration.php" method="POST">
 <p>              
 		 <label for="sPrice">Starting Price:</label>
@@ -71,6 +73,7 @@
 <br>       	   		 
 </p>
 
+	  <!-- form for searching order history by authorized status -->
 <form action="administration.php" method="POST">
 <p>              
 		 
@@ -84,6 +87,7 @@
 <br>         	 		             	   		 
 </p>
 
+	  <!-- form for searching order history by shipped status -->
 <form action="administration.php" method="POST">
 <p>              
 		 
@@ -97,6 +101,7 @@
 <br>          	 		             	   		 
 </p>
 
+	  <!-- table for displaying Order details -->
   <h3 class="">Order Details</h3>
       <table border=1 cellspaces=1 id="">
       <tr>
@@ -115,9 +120,9 @@
 
 <?PHP  
 	      
-switch (true) 
+switch (true) //switch statment that decides which form was submitted
 {
-	case isset($_POST["submit"]):
+	case isset($_POST["submit"]): //updates the shipping costs
 		$_SESSION["bracket1"] = $_POST["bracket1"];
 		$_SESSION["bracket2"] = $_POST["bracket2"];
 		$_SESSION["bracket3"] = $_POST["bracket3"];
@@ -126,14 +131,14 @@ switch (true)
 		echo '<p>Shipping charges have been updated</p>';
 			break;
 
-	case isset($_POST["submit1"]):
+	case isset($_POST["submit1"])://searches by date
 		if($connected)
       		{
 			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
 			$result = $pdo->query($SBD);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)
+	foreach ($rows as $row) //populates the table with returned results
         {
         ?>
         <form method="POST" action="administration.php">
@@ -167,14 +172,14 @@ switch (true)
 	}		
 		break;
 
-	case isset($_POST["submit2"]):
+	case isset($_POST["submit2"]): //searches by price
 		if($connected)
       		{
 			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."";
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)
+	foreach ($rows as $row)//populates the table with returned results
         {
         ?>
         <form method="POST" action="administration.php">
@@ -208,14 +213,14 @@ switch (true)
 		}
 		break;
 
-	case isset($_POST["submit3"]):
+	case isset($_POST["submit3"])://searches by shipped status
 		if($connected)
       		{
 			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)
+	foreach ($rows as $row)//populates the table with returned results
         {
         ?>
         <form method="POST" action="administration.php">
@@ -249,14 +254,14 @@ switch (true)
 		}
 		break;
 
-	case isset($_POST["submit4"]):
+	case isset($_POST["submit4"])://searches by authorized status
 		if($connected)
       		{
 			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
-	foreach ($rows as $row)
+	foreach ($rows as $row)//populates the table with returned results
         {
         ?>
         <form method="POST" action="administration.php">
