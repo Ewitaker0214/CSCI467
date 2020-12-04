@@ -6,6 +6,9 @@
   <title>Product System - Product Catalog</title>
   <!--<link rel="stylesheet" href="../styles.css">-->
 </head>
+  
+<center>
+<h1>WAREHOUSE WORKSTATION</h1>
 
 <?PHP
   $username = 'student';
@@ -39,9 +42,6 @@
   <a href="../index.html"><h1>Home</h1></a>
 </header>
 
-<center>
-<h1>WAREHOUSE WORKSTATION</h1>
-
 <body>
   <main id="">
  
@@ -58,15 +58,13 @@
   </form>
 
   <header> Confirm Shipment
-  if($connected){
+  
   <form action="order.php" method="post">
   Customer E-mail: <input type="text" name="number"><br>
   <input type="submit" name="submit" value="Confirm"><br><br>
   </form>
-  $sql = "SELECT * FROM Order History WHERE authorization = 1 AND shipped = 0 ORDER BY     date_ordered DESC|ASC LIMIT 1";
-  }
-
-  </main>
+    
+</main>
 </body>
 
 <footer>
