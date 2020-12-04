@@ -15,7 +15,8 @@ function enable()
   {
     tags[i].disabled = false;
   }
-  document.getElementsByClassName("name_info")[0].disabled = true;
+  let next = document.getElementsByClassName("name_info")
+  next[0].disabled = true;
 }
 </script>;
 
@@ -46,6 +47,7 @@ function enable()
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
+  $valid = false;
 
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
@@ -143,7 +145,7 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
       {
         $address = $_POST["address"];
       }
-      echo "<script>enable()</script>";
+      $valid = true;
     }
     }
 }
@@ -175,6 +177,11 @@ echo "<script>alert(\"Transaction Failed: " . $result . "\")</script>";
           <input class="card_info" type="text" name="expiration_date" value="" required disabled/>
           <input class="card_info" type="submit" name="submit" value="Submit" disabled/>
         </form>
+        <?php
+        if (valid){
+          echo "<script>enable();</script";
+        }
+         ?>
     </div>
   </main>
 </body>
