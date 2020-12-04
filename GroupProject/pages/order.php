@@ -32,8 +32,6 @@
   catch(PDOexception $e) { // handle that exception
     echo "Connection to database failed: " . $e->getMessage();
   }
-
-  $ErrName = $ErrEmail = $ErrAddress = "";
   $name = $email = $address = "";
 
   $card_num = $expire_date = "";
@@ -65,7 +63,7 @@
     {
       if(empty($_POST["name"]))
       {
-        $ErrName = "Name is required";
+        echo "<script>alert(\"Name is required\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
       }
       else
@@ -74,32 +72,32 @@
         echo "<script>alert(\"Name\")</script>";
         if(!preg_match("/^[a-zA-Z-' ]*$/", $name))
         {
-        $ErrName = "Only letters and whitespace allowed";
+        echo "<script>alert(\"Only letters and whitespace allowed\")</script>";
         echo "<script>window.location=\"order.php\"</script>";
         }
       }
       if (empty($_POST["email"]))
       {
-        $ErrEmail = "Email is required";
+        echo "<script>alert(\"Email is required\")</script>";
       }
       else
       {
         $email = $_POST["email"];
-        echo "<script>alert(\"Email\")</script>";
-    // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL))
       {
-      $ErrEmail = "Invalid email format";
+      echo "<script>alert(\"Invalid email format\")</script>";
       echo "<script>window.location=\"order.php\"</script>";
       }
       if (empty($_POST["address"]))
       {
-        $ErrEmail = "Email is required";
+        echo "<script>alert(\"Email is required\")</script>";
+        echo "<script>window.location=\"order.php\"</script>";
       }
       else
       {
         $address = $_POST["address"];
         echo "<script>alert(\"Address\")</script>";
+        echo "<script>window.location=\"order.php\"</script>";
       }
       echo "<script>enable();</script>";
     }
