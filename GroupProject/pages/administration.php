@@ -126,8 +126,6 @@ switch (true) //switch statment that decides which form was submitted
 			break;
 
 	case isset($_POST["submit1"])://searches by date
-		if($connected)
-      		{
 			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
 			$result = mysqli_query($dbc,$SBD);
 			while($row = mysql_fetch_array($result))
@@ -148,12 +146,9 @@ switch (true) //switch statment that decides which form was submitted
 				echo ‘</tr>;
 			}
 			echo '</table>;
-		}
 		break;
 		
 	case isset($_POST["submit2"])://lists by purchase amount
-		if($connected)
-      		{
 			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."";
 			$result = mysqli_query($dbc, $SBP);
 			while($row = mysql_fetch_array($result))
@@ -174,12 +169,9 @@ switch (true) //switch statment that decides which form was submitted
 				echo ‘</tr>;
 			}
 			echo '</table>;
-		}
 		break;
 
 	case isset($_POST["submit3"])://searches by shipped status
-		if($connected)
-      		{
 			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 			$result = mysqli_query($dbc, $SBP);
 			while($row = mysql_fetch_array($result))
@@ -200,12 +192,9 @@ switch (true) //switch statment that decides which form was submitted
 				echo ‘</tr>;
 			}
 			echo '</table>;
-		}
 		break;
 
 	case isset($_POST["submit4"])://searches by authorized status
-		if($connected)
-      		{
 			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 			$result = mysqli_query($dbc, $SBA);
 			while($row = mysql_fetch_array($result))
@@ -226,7 +215,6 @@ switch (true) //switch statment that decides which form was submitted
 				echo ‘</tr>;
 			}
 			echo '</table>;
-		}
 		break;
 }
 ?>
