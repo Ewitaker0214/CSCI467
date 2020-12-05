@@ -69,6 +69,9 @@
     Customer E-mail: <input type="text" name="number"><br>
     <input type="submit" name="submit" value="Confirm"><br><br>
     </form>
+	  
+  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	  
     
 </main>
 </body>
