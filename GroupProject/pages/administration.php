@@ -8,10 +8,10 @@
 </head>
 
 <?PHP //connection to database
-DEFINE (‘DB_USER’,  ‘z182433’);
-DEFINE (‘DB_PASSWORD’, ‘password’);
-DEFINE (‘DB_HOST’, ‘local host’);
-DEFINE (‘DB_NAME’, ‘Order_History’);
+DEFINE (‘DB_USER’,  ‘z1845428’);
+DEFINE (‘DB_PASSWORD’, ‘2000Jan13’);
+DEFINE (‘DB_HOST’, ‘courses’);
+DEFINE (‘DB_NAME’, ‘z1845428’);
 
 $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 OR die(‘Could not connect to MySQL ‘ .
