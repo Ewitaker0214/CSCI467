@@ -132,7 +132,7 @@ switch (true) //switch statment that decides which form was submitted
 			while($row = mysql_fetch_array($result))
 			{
 				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_id’] . ‘</td><td align=“left”>’ .
+				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
 				$row[‘name’] . ‘</td><td align=“left”>’ .
 				$row[‘email’] . ‘</td><td align=“left”>’ .
 				$row[‘address’] . ‘</td><td align=“left”>’ .
@@ -155,7 +155,7 @@ switch (true) //switch statment that decides which form was submitted
 			while($row = mysql_fetch_array($result))
 			{
 				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_id’] . ‘</td><td align=“left”>’ .
+				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
 				$row[‘name’] . ‘</td><td align=“left”>’ .
 				$row[‘email’] . ‘</td><td align=“left”>’ .
 				$row[‘address’] . ‘</td><td align=“left”>’ .
@@ -178,7 +178,7 @@ switch (true) //switch statment that decides which form was submitted
 			while($row = mysql_fetch_array($result))
 			{
 				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_id’] . ‘</td><td align=“left”>’ .
+				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
 				$row[‘name’] . ‘</td><td align=“left”>’ .
 				$row[‘email’] . ‘</td><td align=“left”>’ .
 				$row[‘address’] . ‘</td><td align=“left”>’ .
@@ -201,7 +201,7 @@ switch (true) //switch statment that decides which form was submitted
 			while($row = mysql_fetch_array($result))
 			{
 				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_id’] . ‘</td><td align=“left”>’ .
+				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
 				$row[‘name’] . ‘</td><td align=“left”>’ .
 				$row[‘email’] . ‘</td><td align=“left”>’ .
 				$row[‘address’] . ‘</td><td align=“left”>’ .
