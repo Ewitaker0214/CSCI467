@@ -8,15 +8,18 @@
 </head>
 
 <?PHP //connection to database
-session_start();
-DEFINE (‘DB_USER’,  ‘z1845428’);
-DEFINE (‘DB_PASSWORD’, ‘2000Jan13’);
-DEFINE (‘DB_HOST’, ‘courses’);
-DEFINE (‘DB_NAME’, ‘z1845428’);
+  $username = 'z1845428';
+  $password = '2000Jan13';
+  $connected = false;
+  try { // if something goes wrong, an exception is thrown
+    $dsn = "mysql:host=courses;dbname=z1845428";
+    $pdo = new PDO($dsn, $username, $password);
+    $connected = true;
+  }
+  catch(PDOexception $e) { // handle that exception
+    echo "Connection to database failed: " . $e->getMessage();
+  }
 
-$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-OR die(‘Could not connect to MySQL ‘ .
-	mysqli_connect_error());
 ?>
 
 <header>
@@ -103,14 +106,14 @@ OR die(‘Could not connect to MySQL ‘ .
         <th>Customer ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Adress</th>
-	<th>Card Number</th>
-	<th>Expiration Date</th>
-	<th>Purchase Amount</th>
+        <th>Address</th>
+	      <th>Card Number</th>
+	      <th>Expiration Date</th>
+	      <th>Purchase Amount</th>
         <th>Authorized</th>
         <th>Shipped</th>
-	<th>Date Ordered</th>
-	<th>Date Shipped</th>
+	      <th>Date Ordered</th>
+	      <th>Date Shipped</th>
       </tr>
 
 <?PHP  
@@ -127,98 +130,179 @@ switch (true) //switch statment that decides which form was submitted
 			break;
 
 	case isset($_POST["submit1"])://searches by date
+		if($connected)
+      		{
 			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] .";";
-			$result = mysqli_query($dbc,$SBD);
-			while($row = mysql_fetch_array($result))
-			{
-				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
-				$row[‘name’] . ‘</td><td align=“left”>’ .
-				$row[‘email’] . ‘</td><td align=“left”>’ .
-				$row[‘address’] . ‘</td><td align=“left”>’ .
-				$row[‘card_number’] . ‘</td><td align=“left”>’ .
-				$row[‘expiration_date’] . ‘</td><td align=“left”>’ .
-				$row[‘purchase_amount’] . ‘</td><td align=“left”>’ .
-				$row[‘authorized’] . ‘</td><td align=“left”>’ .
-				$row[‘shipped’] . ‘</td><td align=“left”>’ .
-				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
-				$row[‘date_shipped’] . ‘</td><td align=“left>’;
-
-				echo ‘</tr>';
-			}
-			echo '</table>';
+			$result = mysql_query($SBD);
+			//$result = $pdo->query($SBD);
+			//$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+	//populates the table with returned results
+	//foreach ($rows as $row) 
+	
+	while($row = mysql_fetch_array($result))		
+	{
+        ?>
+        <form method="POST" action="administration.php">
+          <tr>
+            <td># <?php echo $row["customer_id"]; ?></td>
+            <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
+            <td><?php echo $row["name"]; ?></td>
+            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>"/>
+            <td>$<?php echo $row["email"]; ?></td>
+            <input type="hidden" name="email" value="<?php echo $row["email"]; ?>"/>
+            <td># <?php echo $row["address"]; ?></td>
+            <input type="hidden" name="address" value="<?php echo $row["address"]; ?>"/>
+            <td><?php echo $row["card_number"]; ?></td>
+            <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
+            <td>$<?php echo $row["expiration_date"]; ?></td>
+            <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
+            <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
+            <td><?php echo $row["authorized"]; ?></td>
+            <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
+            <td>$<?php echo $row["shipped"]; ?></td>
+            <input type="hidden" name="shipped" value="<?php echo $row["shipped"]; ?>"/>
+            <td># <?php echo $row["date_ordered"]; ?></td>
+            <input type="hidden" name="date_ordered" value="<?php echo $row["date_ordered"]; ?>"/>
+            <td><?php echo $row["date_shipped"]; ?></td>
+            <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
+          </tr>
+        </form>
+        <?php
+	}
+	}		
 		break;
-		
-	case isset($_POST["submit2"])://lists by purchase amount
-			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .";";
-			$result = mysqli_query($dbc, $SBP);
-			while($row = mysql_fetch_array($result))
-			{
-				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
-				$row[‘name’] . ‘</td><td align=“left”>’ .
-				$row[‘email’] . ‘</td><td align=“left”>’ .
-				$row[‘address’] . ‘</td><td align=“left”>’ .
-				$row[‘card_number’] . ‘</td><td align=“left”>’ .
-				$row[‘expiration_date’] . ‘</td><td align=“left”>’ .
-				$row[‘purchase_amount’] . ‘</td><td align=“left”>’ .
-				$row[‘authorized’] . ‘</td><td align=“left”>’ .
-				$row[‘shipped’] . ‘</td><td align=“left”>’ .
-				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
-				$row[‘date_shipped’] . ‘</td><td align=“left>’;
 
-				echo ‘</tr>';
-			}
-			echo '</table>';
+	case isset($_POST["submit2"]): //searches by price
+		if($connected)
+      		{
+			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .";";
+			$result = $pdo->query($SBP);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)//populates the table with returned results
+        {
+        ?>
+        <form method="POST" action="administration.php">
+          <tr>
+            <td># <?php echo $row["customer_id"]; ?></td>
+            <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
+            <td><?php echo $row["name"]; ?></td>
+            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>"/>
+            <td>$<?php echo $row["email"]; ?></td>
+            <input type="hidden" name="email" value="<?php echo $row["email"]; ?>"/>
+            <td># <?php echo $row["address"]; ?></td>
+            <input type="hidden" name="address" value="<?php echo $row["address"]; ?>"/>
+            <td><?php echo $row["card_number"]; ?></td>
+            <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
+            <td>$<?php echo $row["expiration_date"]; ?></td>
+            <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
+            <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
+            <td><?php echo $row["authorized"]; ?></td>
+            <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
+            <td>$<?php echo $row["shipped"]; ?></td>
+            <input type="hidden" name="shipped" value="<?php echo $row["shipped"]; ?>"/>
+            <td># <?php echo $row["date_ordered"]; ?></td>
+            <input type="hidden" name="date_ordered" value="<?php echo $row["date_ordered"]; ?>"/>
+            <td><?php echo $row["date_shipped"]; ?></td>
+            <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
+          </tr>
+        </form>
+        <?php	
+	}
+		}
 		break;
 
 	case isset($_POST["submit3"])://searches by shipped status
+		if($connected)
+      		{
 			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. ";";
-			$result = mysqli_query($dbc, $SBP);
-			while($row = mysql_fetch_array($result))
-			{
-				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
-				$row[‘name’] . ‘</td><td align=“left”>’ .
-				$row[‘email’] . ‘</td><td align=“left”>’ .
-				$row[‘address’] . ‘</td><td align=“left”>’ .
-				$row[‘card_number’] . ‘</td><td align=“left”>’ .
-				$row[‘expiration_date’] . ‘</td><td align=“left”>’ .
-				$row[‘purchase_amount’] . ‘</td><td align=“left”>’ .
-				$row[‘authorized’] . ‘</td><td align=“left”>’ .
-				$row[‘shipped’] . ‘</td><td align=“left”>’ .
-				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
-				$row[‘date_shipped’] . ‘</td><td align=“left>’;
-
-				echo ‘</tr>';
-			}
-			echo '</table>';
+			$result = $pdo->query($SBS);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)//populates the table with returned results
+        {
+        ?>
+        <form method="POST" action="administration.php">
+          <tr>
+            <td># <?php echo $row["customer_id"]; ?></td>
+            <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
+            <td><?php echo $row["name"]; ?></td>
+            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>"/>
+            <td>$<?php echo $row["email"]; ?></td>
+            <input type="hidden" name="email" value="<?php echo $row["email"]; ?>"/>
+            <td># <?php echo $row["address"]; ?></td>
+            <input type="hidden" name="address" value="<?php echo $row["address"]; ?>"/>
+            <td><?php echo $row["card_number"]; ?></td>
+            <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
+            <td>$<?php echo $row["expiration_date"]; ?></td>
+            <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
+            <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
+            <td><?php echo $row["authorized"]; ?></td>
+            <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
+            <td>$<?php echo $row["shipped"]; ?></td>
+            <input type="hidden" name="shipped" value="<?php echo $row["shipped"]; ?>"/>
+            <td># <?php echo $row["date_ordered"]; ?></td>
+            <input type="hidden" name="date_ordered" value="<?php echo $row["date_ordered"]; ?>"/>
+            <td><?php echo $row["date_shipped"]; ?></td>
+            <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
+          </tr>
+        </form>
+        <?php		
+		}
+		}
 		break;
 
 	case isset($_POST["submit4"])://searches by authorized status
+		if($connected)
+      		{
 			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. ";";
-			$result = mysqli_query($dbc, $SBA);
-			while($row = mysql_fetch_array($result))
-			{
-				echo ‘<tr><td align=‘left”>’ .
-				$row[‘customer_ID’] . ‘</td><td align=“left”>’ .
-				$row[‘name’] . ‘</td><td align=“left”>’ .
-				$row[‘email’] . ‘</td><td align=“left”>’ .
-				$row[‘address’] . ‘</td><td align=“left”>’ .
-				$row[‘card_number’] . ‘</td><td align=“left”>’ .
-				$row[‘expiration_date’] . ‘</td><td align=“left”>’ .
-				$row[‘purchase_amount’] . ‘</td><td align=“left”>’ .
-				$row[‘authorized’] . ‘</td><td align=“left”>’ .
-				$row[‘shipped’] . ‘</td><td align=“left”>’ .
-				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
-				$row[‘date_shipped’] . ‘</td><td align=“left>’;
-
-				echo ‘</tr>';
-			}
-			echo '</table>';
+			$result = $pdo->query($SBA);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			
+	foreach ($rows as $row)//populates the table with returned results
+        {
+        ?>
+        <form method="POST" action="administration.php">
+          <tr>
+            <td># <?php echo $row["customer_id"]; ?></td>
+            <input type="hidden" name="customer_id" value="<?php echo $row["customer_id"]; ?>"/>
+            <td><?php echo $row["name"]; ?></td>
+            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>"/>
+            <td>$<?php echo $row["email"]; ?></td>
+            <input type="hidden" name="email" value="<?php echo $row["email"]; ?>"/>
+            <td># <?php echo $row["address"]; ?></td>
+            <input type="hidden" name="address" value="<?php echo $row["address"]; ?>"/>
+            <td><?php echo $row["card_number"]; ?></td>
+            <input type="hidden" name="card_number" value="<?php echo $row["card_number"]; ?>"/>
+            <td>$<?php echo $row["expiration_date"]; ?></td>
+            <input type="hidden" name="expiration date" value="<?php echo $row["expiration_date"]; ?>"/>
+	    <td># <?php echo $row["purchase_amount"]; ?></td>
+            <input type="hidden" name="purchase_amount" value="<?php echo $row["purchase_amount"]; ?>"/>
+            <td><?php echo $row["authorized"]; ?></td>
+            <input type="hidden" name="authorized" value="<?php echo $row["authorized"]; ?>"/>
+            <td>$<?php echo $row["shipped"]; ?></td>
+            <input type="hidden" name="shipped" value="<?php echo $row["shipped"]; ?>"/>
+            <td># <?php echo $row["date_ordered"]; ?></td>
+            <input type="hidden" name="date_ordered" value="<?php echo $row["date_ordered"]; ?>"/>
+            <td><?php echo $row["date_shipped"]; ?></td>
+            <input type="hidden" name="date_shipped" value="<?php echo $row["date_shipped"]; ?>"/>
+          </tr>
+        </form>
+        <?php
+	}		
+		}
 		break;
 }
+	      //SQL SEARCH STATMENTS
+//$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
+//$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+//$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
+//$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
 ?>
+    </table>
   </main>
 </body>
 
