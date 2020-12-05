@@ -1,9 +1,9 @@
 
 INSERT INTO Order_History (customer_ID, name, email, address, card_number, expiration_date, purchase_amount, authorized, shipped, date_ordered, date_shipped) VALUES
-    (101112, 'Miles', '@Hockey.com', 'sunnylane', 1234 1234 1234 1234, 02, 876.3),
-    (101113, 'Matt', '@jam.com', 'darklane', 1234 1234 1234 1234, 23, 800.00),
-    (101114, 'Riley', '@jelly.com', 'drearylane', 1234 1234 1234 1234, 23, 2604.34),
-    (107624, 'Carl', @football.com, 'notsunnylane',3456345634563456, 22, 300.17, 1, 1);
+    ('Miles', '@Hockey.com', 'sunnylane', 1234 1234 1234 1234, 02, 876.3),
+    ('Matt', '@jam.com', 'darklane', 1234 1234 1234 1234, 23, 800.00),
+    ('Riley', '@jelly.com', 'drearylane', 1234 1234 1234 1234, 23, 2604.34),
+    ('Carl', @football.com, 'notsunnylane',3456345634563456, 22, 300.17, 1, 1);
     
 
 
