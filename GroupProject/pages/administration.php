@@ -143,9 +143,9 @@ switch (true) //switch statment that decides which form was submitted
 				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
 				$row[‘date_shipped’] . ‘</td><td align=“left>’;
 
-				echo ‘</tr>;
+				echo ‘</tr>';
 			}
-			echo '</table>;
+			echo '</table>';
 		break;
 		
 	case isset($_POST["submit2"])://lists by purchase amount
@@ -166,9 +166,9 @@ switch (true) //switch statment that decides which form was submitted
 				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
 				$row[‘date_shipped’] . ‘</td><td align=“left>’;
 
-				echo ‘</tr>;
+				echo ‘</tr>';
 			}
-			echo '</table>;
+			echo '</table>';
 		break;
 
 	case isset($_POST["submit3"])://searches by shipped status
@@ -189,9 +189,9 @@ switch (true) //switch statment that decides which form was submitted
 				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
 				$row[‘date_shipped’] . ‘</td><td align=“left>’;
 
-				echo ‘</tr>;
+				echo ‘</tr>';
 			}
-			echo '</table>;
+			echo '</table>';
 		break;
 
 	case isset($_POST["submit4"])://searches by authorized status
@@ -212,10 +212,9 @@ switch (true) //switch statment that decides which form was submitted
 				$row[‘date_ordered’] . ‘</td><td align=“left”>’ .
 				$row[‘date_shipped’] . ‘</td><td align=“left>’;
 
-				echo ‘</tr>;
+				echo ‘</tr>';
 			}
-			echo '</table>;
-			mysqli_close($dbc);
+			echo '</table>';
 		break;
 }
 ?>
