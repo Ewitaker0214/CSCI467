@@ -72,7 +72,7 @@ OR die(‘Could not connect to MySQL ‘ .
 <form action="administration.php" method="POST">
 <p>              
 		 
-		 <input type="Radio" id="Authorized" name="isAuthorized" value="1" >
+		 <input type="Radio" id="Authorized" name="isAuthorized" value="1" checked>
 		 <label for="Authorized">Authorized</label>
 		 
             	 <input type="Radio" id="Unauthorized" name="isAuthorized" value="0" >
@@ -86,7 +86,7 @@ OR die(‘Could not connect to MySQL ‘ .
 <form action="administration.php" method="POST">
 <p>              
 		 
-		 <input type="Radio" id="Sphipped" name="isShipped" value="1" >
+		 <input type="Radio" id="Sphipped" name="isShipped" value="1" checked>
 		 <label for="Shipped">Sphipped</label>
 		 
             	 <input type="Radio" id="notShipped" name="isShipped" value="0" >
