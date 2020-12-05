@@ -8,6 +8,7 @@
 </head>
 
 <?PHP //connection to database
+session_start();
 DEFINE (‘DB_USER’,  ‘z1845428’);
 DEFINE (‘DB_PASSWORD’, ‘2000Jan13’);
 DEFINE (‘DB_HOST’, ‘courses’);
