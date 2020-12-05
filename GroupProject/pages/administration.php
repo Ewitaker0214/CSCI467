@@ -126,7 +126,7 @@ switch (true) //switch statment that decides which form was submitted
 			break;
 
 	case isset($_POST["submit1"])://searches by date
-			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
+			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] .";";
 			$result = mysqli_query($dbc,$SBD);
 			while($row = mysql_fetch_array($result))
 			{
@@ -149,7 +149,7 @@ switch (true) //switch statment that decides which form was submitted
 		break;
 		
 	case isset($_POST["submit2"])://lists by purchase amount
-			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."";
+			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .";";
 			$result = mysqli_query($dbc, $SBP);
 			while($row = mysql_fetch_array($result))
 			{
@@ -172,7 +172,7 @@ switch (true) //switch statment that decides which form was submitted
 		break;
 
 	case isset($_POST["submit3"])://searches by shipped status
-			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. ";";
 			$result = mysqli_query($dbc, $SBP);
 			while($row = mysql_fetch_array($result))
 			{
@@ -195,7 +195,7 @@ switch (true) //switch statment that decides which form was submitted
 		break;
 
 	case isset($_POST["submit4"])://searches by authorized status
-			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
+			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. ";";
 			$result = mysqli_query($dbc, $SBA);
 			while($row = mysql_fetch_array($result))
 			{
@@ -215,6 +215,7 @@ switch (true) //switch statment that decides which form was submitted
 				echo ‘</tr>;
 			}
 			echo '</table>;
+			mysqli_close($dbc);
 		break;
 }
 ?>
