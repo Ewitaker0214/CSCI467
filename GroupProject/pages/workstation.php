@@ -31,8 +31,8 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
   
-  $rs = $pdo_legacy->query("DESCRIBE parts;");
-  print_r($rs->fetchALL(PDO::FETCH_ASSOC));
+  //$rs = $pdo_legacy->query("DESCRIBE parts;");
+  //print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
   
 <header>
