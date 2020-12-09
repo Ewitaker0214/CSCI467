@@ -45,7 +45,7 @@
 <body>
   <main id="">
  
-  
+  <!--form to print packing list based on a range of dates-->
   <header> Packing List  
     <form action="workstation.php" method="post">
     <label for="sDate">Starting Date:</label>
@@ -56,18 +56,22 @@
 		      	 
     <p><input type="submit" name="submit1" value="Print"></p>                                        
    
- 
+ <!--form to search for order # to print out invoice & shipping label-->
   <header> Print Invoice & Shipping Label  
     <form action="order.php" method="post">
     <br>Order #: <input type="text" name="number"><br>
     <input type="submit" name="submit" value="Print"><br><br>
     </form>
 
+  <!--form to confirm shipment of order by entering e-mail of customer and e-email sent to notify customer of shipment-->	  
   <header> Confirm Shipment 
     <form action="order.php" method="post">
     Customer E-mail: <input type="text" name="number"><br>
     <input type="submit" name="submit" value="Confirm"><br><br>
     </form>
+	  
+  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	  
     
 </main>
 </body>

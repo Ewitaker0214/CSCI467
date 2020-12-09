@@ -1,4 +1,12 @@
 <!doctype html>
+<!-- 
+Author:       Nathan Slinker
+zID:          z1872433
+Due Date:     12/9/2020 6:15pm
+Description: Administration Page, allows the admin to set the shipping and handling charges
+for the different weight brackets. This page also allows the admin to search for complete order details 
+by date, price, shipping status, and authorization status.
+-->
 
 <html lang="en">
 <head>
@@ -20,8 +28,6 @@
     echo "Connection to database failed: " . $e->getMessage();
   }
 
- // $rs = $pdo_legacy->query("DESCRIBE parts;");
- // print_r($rs->fetchALL(PDO::FETCH_ASSOC));
 ?>
 
 <header>
@@ -54,7 +60,7 @@
 		 <input type="datetime-local" id="sDate" name="sDate" value="1/1/2000 12:00 AM" >
 
             	 <label for="eDate">End Date:</label>
-		 <input type="datetime-local" id="eDate" name="eDate" value="12/3/2020 12:00 AM" >
+		 <input type="datetime-local" id="eDate" name="eDate" value="12/31/2020 12:00 AM" >
 		      	 
   		 <p><input type="submit" name="submit1" value="View"></p>
 <br>
@@ -77,7 +83,7 @@
 <form action="administration.php" method="POST">
 <p>              
 		 
-		 <input type="Radio" id="Authorized" name="isAuthorized" value="1" >
+		 <input type="Radio" id="Authorized" name="isAuthorized" value="1" checked>
 		 <label for="Authorized">Authorized</label>
 		 
             	 <input type="Radio" id="Unauthorized" name="isAuthorized" value="0" >
@@ -91,7 +97,7 @@
 <form action="administration.php" method="POST">
 <p>              
 		 
-		 <input type="Radio" id="Sphipped" name="isShipped" value="1" >
+		 <input type="Radio" id="Sphipped" name="isShipped" value="1" checked>
 		 <label for="Shipped">Sphipped</label>
 		 
             	 <input type="Radio" id="notShipped" name="isShipped" value="0" >
@@ -108,7 +114,7 @@
         <th>Customer ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Adress</th>
+        <th>Address</th>
 	      <th>Card Number</th>
 	      <th>Expiration Date</th>
 	      <th>Purchase Amount</th>
@@ -122,7 +128,7 @@
 	      
 switch (true) //switch statment that decides which form was submitted
 {
-	case isset($_POST["submit"]): //updates the shipping costs
+	case isset($_POST["submit"]): //updates the shipping and handling costs
 		$_SESSION["bracket1"] = $_POST["bracket1"];
 		$_SESSION["bracket2"] = $_POST["bracket2"];
 		$_SESSION["bracket3"] = $_POST["bracket3"];
@@ -134,14 +140,11 @@ switch (true) //switch statment that decides which form was submitted
 	case isset($_POST["submit1"])://searches by date
 		if($connected)
       		{
-			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
-			$result = mysql_query($SBD);
-			//$result = $pdo->query($SBD);
-			//$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] .";";
+			$result = $pdo->query($SBD);
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 	//populates the table with returned results
-	//foreach ($rows as $row) 
-	
-	while($row = mysql_fetch_array($result))		
+	foreach ($rows as $row) 		
 	{
         ?>
         <form method="POST" action="administration.php">
@@ -178,7 +181,7 @@ switch (true) //switch statment that decides which form was submitted
 	case isset($_POST["submit2"]): //searches by price
 		if($connected)
       		{
-			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."";
+			$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] .";";
 			$result = $pdo->query($SBP);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -219,7 +222,7 @@ switch (true) //switch statment that decides which form was submitted
 	case isset($_POST["submit3"])://searches by shipped status
 		if($connected)
       		{
-			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
+			$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. ";";
 			$result = $pdo->query($SBS);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -260,7 +263,7 @@ switch (true) //switch statment that decides which form was submitted
 	case isset($_POST["submit4"])://searches by authorized status
 		if($connected)
       		{
-			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. "";
+			$SBA = "Select * From Order_History Where authorized = " .$_POST["isAuthorized"]. ";";
 			$result = $pdo->query($SBA);
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -298,7 +301,8 @@ switch (true) //switch statment that decides which form was submitted
 		}
 		break;
 }
-	      //SQL SEARCH STATMENTS
+	      //SQL SEARCH STATMENTS - these where my original statements during the presentation, i hadnt realized i forgot
+	      //to put a semi-clone in the last double qoutes, so my statments werent executing
 //$SBD = "Select * From Order_History Where date_ordered <= " . $_POST["eDate"] . " AND date_ordered >= " . $_POST["sDate"] ."";
 //$SBS = "Select * From Order_History Where shipped = " .$_POST["isShipped"]. "";
 //$SBP = "Select * From Order_History Where purchase_amount <= " . $_POST["ePrice"] . " AND purchase_amount >= " . $_POST["sPrice"] ."" ;
