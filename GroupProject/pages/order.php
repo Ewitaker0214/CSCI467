@@ -149,7 +149,7 @@ function closeForm(){
               else
               {
                 $taxes = 0.15;
-                $amount = ($amount * $taxes) + $amount;
+                $amount = number_format(($amount * $taxes) + $amount, 2);
               }
               if(empty($_POST["name"]))
               {
