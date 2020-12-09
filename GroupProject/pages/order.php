@@ -74,7 +74,7 @@ function closeForm(){
       else
       {
         $taxes = 0.15;
-        $amount = ($amount * $taxes) + $amount;
+        $amount = number_format(($amount * $taxes) + $amount, 2);
       }
       if(empty($_POST["card_number"]))
       {
@@ -121,11 +121,11 @@ function closeForm(){
 
             $context  = stream_context_create($options);
             $result = file_get_contents($url, false, $context);
-            echo $result;
+            
             if (!preg_match("/.*(errors).*/", $result))
             {
               $substrpos = strpos($result, "_id");
-              $substr = substr($result, $substrpos+5);
+              $substr = substr($result, $substrpos);
               echo "<h1>Your Transaction Number is: " . $substr ."</h1>";
               $complete = true;
               $pdo->query("INSERT INTO Order_History (name, email, address, card_number, expiration_date, purchase_amount, authorized) VALUES ($name, $email, $address, $card_num, $expire_date, $amount, 1);");
